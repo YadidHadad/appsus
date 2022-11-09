@@ -3,7 +3,6 @@ import { storageService } from '../../../services/async-storage.service.js'
 
 import notesData from '../../../data/notes.json' assert { type: 'json' }
 
-
 console.log(`gNotes:`, notesData)
 
 const NOTES_KEY = 'notesDB'
