@@ -1,10 +1,10 @@
 import homePage from './views/app-home.cmp.js'
 import aboutPage from './views/app-about.cmp.js'
-import emailApp from './views/email-app.cmp.js'
-import emailDetails from './views/email-details.cmp.js'
+import emailIndex from './apps/mail/pages/email-index.cmp.js'
+import emailDetails from './apps/mail/pages/email-details.cmp.js'
 // import emailCompose from './views/email-compose.cmp.js'
-import noteApp from './views/note-app.cmp.js'
-import noteDetails from './views/note-details.cmp.js'
+import noteIndex from './apps/keep/pages/note-index.cmp.js'
+import noteDetails from './apps/keep/pages/note-details.cmp.js'
 
 const { createRouter, createWebHashHistory } = VueRouter
 
@@ -21,7 +21,7 @@ const routerOptions = {
 		},
 		{
 			path: '/email',
-			component: emailApp,
+			component: emailIndex,
 		},
 		{
 			path: '/email/:id',
@@ -33,7 +33,7 @@ const routerOptions = {
 		// },
 		{
 			path: '/note',
-			component: noteApp,
+			component: noteIndex,
 		},
 		{
 			path: '/note:id',
