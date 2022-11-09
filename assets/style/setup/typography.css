@@ -2,14 +2,21 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 
 @font-face {
-    font-family: "OpenSans-Light";
-    src: url("/assets/fonts/OpenSans-Light.ttf");
+    font-family: "OpenSans-Regular";
+    src: url("/assets/fonts/opensans/OpenSans-Regular.ttf");
     }
+
 @font-face {
     font-family: "OpenSans-Medium";
-    src: url("/assets/fonts/OpenSans-Medium.ttf");
+    src: url("/assets/fonts/opensans/OpenSans-Medium.ttf");
     }
+
 @font-face {
     font-family: "OpenSans-Bold";
-    src: url("/assets/fonts/OpenSans-Bold.ttf");
+    src: url("/assets/fonts/opensans/OpenSans-Bold.ttf");
+    }
+
+@font-face {
+    font-family: "fa";
+    src: url("/assets/fonts/fa/fa-solid-900.ttf");
     }
