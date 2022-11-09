@@ -11,3 +11,6 @@ function makeId(length = 5) {
     }
     return txt
 }
+
+const labels = [critical, family, work, friends, spam, memories, romantic]
+const noteTypes = [txt, img, work, video, todos]
