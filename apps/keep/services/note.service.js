@@ -1,7 +1,7 @@
 import { utilService } from '/services/util.service.js'
 import { storageService } from '/services/async-storage.service.js'
 
-import gNotes from '../../data/notes.json' assert {type: 'json'}
+import gNotes from '/data/notes.json' assert {type: 'json'}
 
 console.log(`gNotes:`, gNotes)
 
