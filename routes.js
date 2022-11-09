@@ -16,7 +16,7 @@ const routerOptions = {
 			component: homePage,
 		},
 		{
-			path: '/about',
+			path: '/books',
 			component: aboutPage,
 		},
 		{
