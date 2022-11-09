@@ -13,4 +13,4 @@ function makeId(length = 5) {
 }
 
 const labels = [critical, family, work, friends, spam, memories, romantic]
-const noteTypes = [txt, img, work, video, todos]
+const noteTypes = [txt, img, video, todos]
