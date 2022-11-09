@@ -9,7 +9,6 @@ export default {
             <h1>email</h1>
             <email-filter @filter="filter"/>
             <email-list v-if="emails"/>
-      
         </section>
         `,
 
