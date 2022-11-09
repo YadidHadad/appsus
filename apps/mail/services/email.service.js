@@ -1,6 +1,7 @@
 import { utilService } from '/services/util.service.js'
 import { storageService } from '/services/async-storage.service.js'
-import emailsList from '../../../data/email.json' assert { type: 'json' }
+import emailsData from '../../../data/email.json' assert { type: 'json' }
+console.log(emailsData);
 
 const EMAILS_KEY = 'emailsDB'
 
@@ -40,7 +41,7 @@ function save(email) {
 function _createEmails() {
   let emails = utilService.loadFromStorage(EMAILS_KEY)
   if (!emails || !emails.length) {
-    emails = emailsList
+    emails = emailsData
     utilService.saveToStorage(EMAILS_KEY, emails)
     console.log(emails)
   }
