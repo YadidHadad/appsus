@@ -4,7 +4,7 @@ import emailsData from '../../../data/email.json' assert { type: 'json' }
 console.log(emailsData);
 
 const EMAILS_KEY = 'emailsDB'
-
+const loggedinUser = { email: 'user@appsus.com', fullname: 'Mahatma Appsus' }
 _createEmails()
 
 export const emailService = {
