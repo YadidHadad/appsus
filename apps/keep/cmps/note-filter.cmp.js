@@ -16,7 +16,6 @@ export default {
     },
     methods: {
         filter() {
-            console.log(`this.filterBy:`, { ...this.filterBy })
             this.$emit('filterTitle', { ...this.filterBy })
         }
     },

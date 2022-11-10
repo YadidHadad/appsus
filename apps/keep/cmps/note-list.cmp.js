@@ -12,6 +12,8 @@ import noteVideo from './note-video.cmp.js'
 export default {
     name: 'note list',
     props: ['notes'],
+    emits: ['selectedNoteToShow'],
+
     template: `
         <h1>your pinned notes are here!</h1>
         <section class="note-list">
@@ -24,7 +26,7 @@ export default {
         <section class="note-list">
             <article v-for="note in notes"  :key="note.id" class="note-preview fade flex justify-center align-center" :style="{ backgroundColor: 'todo.style' }" >
                 <div v-if="!note.isPinned" class="pinned" @click="togglePin(note)"><span class="fa unpin-icon"></span></div>
-                <component :is="note.type" v-if="!note.isPinned" :info="note.info"/>
+                <component :is="note.type" v-if="!note.isPinned" :info="note.info"  @click="editNote(note)" @setNoteToRemove="removeNote(note)"/>
             </article>
         </section>
         `,
@@ -46,11 +48,11 @@ export default {
         },
 
         editNote(note) {
-            console.log({ ...note })
-            this.noteToEditId = note.id
-            this.$route.params.id = this.noteToEditId.id
-            console.log(this.$route.params.id)
-            console.log(this.$route)
+            this.$router.push(`/note/${note.id}`)
+            this.$emit('selectedNoteToShow', { ...note })
+        },
+        removeNote() {
+            console.log(note)
 
         }
     },

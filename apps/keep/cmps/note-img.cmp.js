@@ -6,11 +6,9 @@ export default {
     template: `
         <section class='note-img' :style="style">
             <div class="image-container "  :style="{ backgroundImage: 'url(' + info.url + ')' }" >
-
             </div>
         <!-- <img :src="info.url" alt="" /> -->
             <h5>{{info.title}}</h5>
-
         </section>
         `,
     components: {},
@@ -21,6 +19,10 @@ export default {
         }
     },
     methods: {
+        setNoteToRemove() {
+            this.$emit('setNoteToRemove', '')
+
+        }
     },
     computed: {
         style() {

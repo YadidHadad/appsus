@@ -18,12 +18,9 @@ export const noteService = {
 }
 
 function query(filterBy) {
-  console.log(`filterBy:`, filterBy)
-
   var filter = { ...filterBy }
   var title = filter.title
   var labels = [...filterBy.label]
-
 
   return storageService.query(NOTES_KEY)
     .then(notes => {
@@ -74,19 +71,14 @@ function getPrevNoteId(noteId) {
 }
 
 function createNote(type, value) {
-  console.log(type, value)
   const note = _getNoteData(type, value)
-  console.log(`note:`, note)
   return save(note)
     .then(response => { return response })
 }
 
 function _getNoteData(type, value) {
 
-  // const id = utilService.makeId()
-
   if (type === 'txt') return {
-    // id,
     type: 'note-txt',
     isPinned: false,
     info: {
@@ -99,7 +91,6 @@ function _getNoteData(type, value) {
     }
   }
   else if (type === 'img') return {
-    // id,
     type: 'note-img',
     isPinned: false,
     info: {
@@ -112,7 +103,6 @@ function _getNoteData(type, value) {
     }
   }
   else if (type === 'video') return {
-    // id,
     type: 'note-video',
     isPinned: false,
     info: {
@@ -125,7 +115,6 @@ function _getNoteData(type, value) {
     }
   }
   else if (type === 'todos') return {
-    // id,
     type: 'note-todos',
     isPinned: false,
     info: {

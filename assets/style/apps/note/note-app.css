@@ -146,15 +146,18 @@ textarea:focus, input:focus{
     color: black;
 }
 
+.note-details{
+    background-color: blue;
+    height: 500px;
+}
+
 /* -----------RESPONSIVE----------- */
 
 @media  (max-width: 780px) {
 
     .note-add{
         flex-direction: column;
-        margin-inline: 2rem;
         width: calc(100vw - 4rem);
-        transform: none;
     }
     .btns-container{
         display: flex;
@@ -162,7 +165,7 @@ textarea:focus, input:focus{
     }
 }
 
-@media  (max-width: 480px) {
+@media  (max-width: 780px) {
     .note-list{
         column-count: 1;
     }

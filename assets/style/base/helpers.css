@@ -95,11 +95,15 @@
 
 .fa.pin-icon::before {
     content: "\f276";
-    font-size: 1rem;
+    font-size: 1.5rem;
 }
 
 .fa.unpin-icon::before {
     content: "\f276";
+    font-size: 1.5rem;
+}
+.fa.remove-icon::before {
+    content: "\f00d";
     font-size: 1rem;
 }
 /* center */

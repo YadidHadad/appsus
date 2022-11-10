@@ -38,7 +38,6 @@ export default {
     },
     methods: {
         setNoteType(type) {
-            console.log(`type:`, type)
             if (type === 'txt') {
                 this.placeholder = 'Enter text to remember'
             } else if (type === 'img') {
@@ -57,7 +56,6 @@ export default {
 
             noteService.createNote(type, value)
                 .then(response => {
-                    console.log(response)
                     this.$emit('newNote', response)
                 })
             this.note.value = ''
