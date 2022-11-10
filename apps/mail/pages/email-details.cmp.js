@@ -2,7 +2,8 @@ import { emailService } from '../services/email.service.js'
 export default {
   name: 'email-details',
   template: `
-  <section v-if="email">
+  
+  <section class="email-details" v-if="email">
   <router-link to="/email">←</router-link>
   <h1>{{email.subject}}</h1>
   <p>{{email.body}}</p>

@@ -1,13 +1,15 @@
 import { emailService } from '../services/email.service.js'
 import emailList from '../cmps/email-list.cmp.js'
 import emailFilter from '../cmps/email-filter.cmp.js'
+import emailFolderList from '../cmps/email-folder-list.js'
 
 export default {
   name: 'email-app',
   props: [],
   template: `
         <section class="app-container">
-            <email-filter @filter="filter" class="search-filter"/>
+            <email-filter @filter="filter" class="search-filter filter"/>
+            <email-folder-list class="email-folder-list"/>
             <email-list @remove="removeEmail" v-if="emails" :emails="emails"/>
         </section>
         `,
@@ -16,7 +18,7 @@ export default {
     return {
       emails: null,
       filterBy: {
-        text: "",
+        text: '',
         isRead: 'all',
       },
     }
@@ -54,5 +56,6 @@ export default {
   components: {
     emailList,
     emailFilter,
+    emailFolderList,
   },
 }

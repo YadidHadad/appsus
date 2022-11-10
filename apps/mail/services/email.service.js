@@ -19,11 +19,13 @@ function query(filterBy) {
   return storageService.query(EMAILS_KEY).then((emails) => {
     const regex = new RegExp(filterBy.text, 'i')
     let newEmails = emails.filter((email) => regex.test(email.subject))
-    if (filterBy.isRead != "all") {
+    if (filterBy.isRead != 'all') {
       newEmails = newEmails.filter((email) => (filterBy.isRead ? email.isRead : !email.isRead))
     }
-
-    return newEmails
+    if (filterBy === 'inbox' || filterBy === 'sent' || filterBy === 'draft' || filterBy === 'trash') {
+      newEmails = newEmails.filter((email) => email)
+    }
+      return newEmails
   })
 }
 
