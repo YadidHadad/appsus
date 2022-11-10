@@ -1,13 +1,24 @@
 export default {
-    name: '',
+    name: 'note-filter',
     props: [],
     template: `
+        <section >
+            <input type="text" placeholder="search note by title" v-model.lazy="filterBy.title" @change="filter" />
+        </section>
         `,
-    components: {},
     created() { },
     data() {
-        return {}
+        return {
+            filterBy: {
+                title: '',
+            }
+        }
     },
-    methods: {},
-    computed: {},
+    methods: {
+        filter() {
+            console.log(`this.filterBy:`, { ...this.filterBy })
+            this.$emit('filterTitle', { ...this.filterBy })
+        }
+    },
+
 }

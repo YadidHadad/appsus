@@ -3,7 +3,7 @@ export default {
     props: [],
     template: `
         <div class="navbar">
-            <nav class="flex column gap align-center justify-center">
+            <nav class="flex row gap align-center justify-center">
                 <router-link to="/">
                     <img src="/assets/img/header/google-home.svg" alt="" />
                 </router-link>
