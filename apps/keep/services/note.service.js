@@ -22,10 +22,17 @@ function query(filterBy) {
   var title = filter.title
   var labels = [...filterBy.label]
 
+  console.log(filter)
+  console.log(title)
+  console.log(labels)
+
+
   return storageService.query(NOTES_KEY)
     .then(notes => {
       const regex = new RegExp(title, 'i')
-      let newNotes = notes.filter(note => regex.test(note.info.title) && note.info.label.some(label => labels.includes(label)))
+      let newNotes = notes.filter(note => regex.test(note.info.title))
+      if (labels.length > 0) newNotes = newNotes.filter(note => note.info.label.some(label => labels.includes(label)))
+      console.log(newNotes)
       return newNotes
     })
 }

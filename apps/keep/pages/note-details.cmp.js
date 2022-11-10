@@ -16,7 +16,7 @@ export default {
                 <div @click="closeNote">close</div>
                 <div>color</div>
                 <div @click="removeNote">remove</div>
-                <router-link  :to="'/email/' + email.subject + '/'+ email.body + ''"> <email-preview :email="email"/>send as email</router-link>
+                <router-link  :to="'/email/' + email.subject + '/'+ email.body + ''">send as email</router-link>
 
             </div>
             <section v-if="note.type === 'note-img'">
@@ -43,15 +43,9 @@ export default {
         </section>
         `,
     created() {
-
-
-
-
-
     },
     unmounted() {
         console.log(this.$route)
-
     },
     data() {
         return {
@@ -59,7 +53,6 @@ export default {
             email: {
                 subject: this.note.info.title,
                 body: this.note.info.url || this.note.info.txt
-
             }
 
         }
@@ -69,8 +62,9 @@ export default {
             this.$emit('noteToRemove', { ...this.note.id })
             console.log(this.note)
             noteService.remove(this.note.id)
-                .then(response => response)
+                .then(() => this.closeNote())
         },
+
         closeNote() {
             this.$emit('unselectNote')
 

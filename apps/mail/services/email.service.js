@@ -65,7 +65,7 @@ function getEmptyEmail(subject, body, to) {
     body,
     isRead: null,
     status: 'sent',
-    sendAt: Date.now(),
+    sentAt: Date.now(),
     from: { name: loggedinUser.fullname, emailAddress: loggedinUser.email },
     to,
   }

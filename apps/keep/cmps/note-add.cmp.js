@@ -2,7 +2,7 @@ import { noteService } from "../services/note.service.js"
 
 export default {
     name: 'note-add',
-    props: [],
+    props: ['urlInfo'],
     template: `
         <form class="note-add flex "  @submit.prevent="createNote">
             <input type="text" :placeholder="placeholder" v-model="note.value"  ref="name" />
@@ -23,7 +23,19 @@ export default {
         </form>
         `,
     components: {},
-    created() { },
+    created() {
+        console.log(this.urlInfo)
+
+        if (this.urlInfo.value) {
+
+            if (this.urlInfo.value !== '') {
+                this.note.value = this.urlInfo.value
+                this.createNote()
+            }
+        }
+
+
+    },
     mounted() {
         this.$refs.name.focus()
     },
@@ -59,7 +71,6 @@ export default {
                     this.$emit('newNote', response)
                 })
             this.note.value = ''
-
         }
 
     },

@@ -73,7 +73,9 @@ export default {
         return emails
       })
     },
-
+    sendToNote(email) {
+      emailService.sendEmailToNote(email)
+    },
     composeEmail(email) {
       const { subject, to, body } = email
       const newEmail = emailService.getEmptyEmail(subject, body, to)

@@ -11,7 +11,7 @@ export default {
     template: `
         <section class="app-container">
             <note-filter class="search-filter" @filterTitle="setFilterTitle" />
-            <note-add class="" @newNote="addNewNote"/>
+            <note-add class="" @newNote="addNewNote" :urlInfo="urlInfo"/>
             
             <note-details 
                 v-if="selectedNote" 
@@ -30,14 +30,21 @@ export default {
         return {
             filterBy: {
                 title: '',
-                label: ['critical', 'family', 'work', 'friends', 'spam', 'memories', 'romantic'],
+                label: [],
             },
             notes: null,
             selectedNote: null,
+            urlInfo: {
+                value: ''
+            }
         }
     },
     created() {
         this.notesToShow()
+
+        this.urlInfo.value = this.$route.params.value
+        console.log(this.$route)
+        console.log(this.$route.params.value)
     },
     methods: {
         setFilterTitle(value) {
@@ -45,13 +52,14 @@ export default {
             this.filterBy.title = value.title
             this.notesToShow()
         },
+
         notesToShow() {
             return noteService.query(this.filterBy)
                 .then(notes => {
                     this.notes = notes
                     this.filterBy = {
                         title: '',
-                        label: ['critical', 'family', 'work', 'friends', 'spam', 'memories', 'romantic'],
+                        label: [],
                     }
                 })
         },
@@ -73,6 +81,7 @@ export default {
         removeNote(noteId) {
             const idx = this.notes.findIndex(note => note.id === noteId)
             this.notes = this.notes.splice(idx, 1)
+            this.notesToShow()
         }
     },
 
@@ -84,3 +93,6 @@ export default {
         noteDetails,
     },
 }
+
+
+// label: ['critical', 'family', 'work', 'friends', 'spam', 'memories', 'romantic']

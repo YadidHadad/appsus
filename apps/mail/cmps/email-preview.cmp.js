@@ -12,6 +12,7 @@ export default {
     isRead() {
       return { unread: !this.email.isRead, read: this.email.isRead }
     },
+    
     getDate() {
       return new Date(this.email.sentAt).toDateString().slice(4, 10)
     },
