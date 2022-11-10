@@ -13,7 +13,6 @@ export default {
             <!-- <h1>NOTE INDEX</h1> -->
             <note-filter class="note-filter" @filterTitle="setFilterTitle"/>
             <!-- <div class="center> -->
-
                 <note-add class="center"></note-add>
                 <note-list 
                     v-if="notes"
@@ -42,6 +41,7 @@ export default {
         },
 
         notesToShow() {
+            // debugger
             return noteService.query()
                 .then(notes => {
                     // this.notes = notes
