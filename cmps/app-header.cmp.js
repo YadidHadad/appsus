@@ -4,10 +4,10 @@ import appNavbar from "./app-navbar.cmp.js"
 export default {
     template: `
             <div class="logo flex row align-center justify-center">
-                <img v-if="appOpen === '/email' " src="/assets/img/header/Gmail_icon_(2020).svg.png" alt="" />
-                <img v-if="appOpen === '/note'" src="/assets/img/header/Google_Keep_icon_(2020).svg.png" alt="" />
-                <img v-if="appOpen === '/'" src="/assets/img/header/google-home.svg" alt="" />
-                <img v-if="appOpen === '/books'" src="/assets/img/header/unnamed.png" alt="" />
+                <img v-if="appOpen === '/email' " src="../assets/img/header/gmail.png" alt="" />
+                <img v-if="appOpen === '/note'" src="../assets/img/header/keep.png" alt="" />
+                <img v-if="appOpen === '/'" src="../assets/img/header/home.svg" alt="" />
+                <img v-if="appOpen === '/books'" src="../assets/img/header/scholar.png" alt="" />
                 <h1>AppSus</h1>
             </div>
             <div @click="isNavShown = !isNavShown"><h1 class="fa navbar-icon"></h1></div>

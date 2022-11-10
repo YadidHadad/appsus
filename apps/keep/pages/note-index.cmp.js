@@ -11,9 +11,9 @@ export default {
     template: `
         <section class="app-container">
             <!-- <h1>NOTE INDEX</h1> -->
-            <note-filter class="search-filter" @filterTitle="setFilterTitle"/>
+            <note-filter class="search-filter" @filterTitle="setFilterTitle" />
             <!-- <div class="center> -->
-                <note-add class="center"></note-add>
+                <note-add class="" @newNote="addNewNote"/>
                 <note-list 
                     v-if="notes"
                     :notes="notes" />
@@ -25,7 +25,8 @@ export default {
         return {
             filterBy: {
                 title: '',
-                label: [],
+                // label: ['family', 'memories'],
+                label: ['critical', 'family', 'work', 'friends', 'spam', 'memories', 'romantic'],
             },
             notes: null,
         }
@@ -36,24 +37,28 @@ export default {
     methods: {
         setFilterTitle(value) {
             console.log(`value:`, value)
-            this.filterBy.title = value
+            this.filterBy.title = value.title
             this.notesToShow()
         },
-
         notesToShow() {
-            // debugger
-            return noteService.query()
+            return noteService.query(this.filterBy)
                 .then(notes => {
-                    console.log(`notes:`, notes)
-                    var filter = { ...this.filterBy.title }
-                    console.log(`filter:`, filter.title)
-                    const regex = new RegExp(filter.title, 'i')
-                    notes = notes.filter(note => regex.test(note.info.title) && note.info.label.some(label => this.filterBy.label.includes(label)))
                     this.notes = notes
-                    return notes
+                    this.filterBy = {
+                        title: '',
+                        label: ['critical', 'family', 'work', 'friends', 'spam', 'memories', 'romantic'],
+                    }
                 })
+
+
         },
+        addNewNote(newNote) {
+            console.log(newNote)
+            this.notes.unshift(newNote)
+
+        }
     },
+
     computed: {},
     components: {
         noteFilter,

@@ -1,0 +1,17 @@
+.home-router{
+padding: 5rem;
+}
+
+.home-router h1{
+    font-size: 5rem !important;
+    
+}
+.home-router img{
+    width: 10rem;
+    opacity: 0.5;
+    
+}
+.home-router img:hover{
+    /* width: 3rem; */
+    opacity: 1;
+}

@@ -14,10 +14,23 @@ export const noteService = {
   save,
   getNextNoteId,
   getPrevNoteId,
+  createNote,
 }
 
-function query() {
+function query(filterBy) {
+  console.log(`filterBy:`, filterBy)
+
+  var filter = { ...filterBy }
+  var title = filter.title
+  var labels = [...filterBy.label]
+
+
   return storageService.query(NOTES_KEY)
+    .then(notes => {
+      const regex = new RegExp(title, 'i')
+      let newNotes = notes.filter(note => regex.test(note.info.title) && note.info.label.some(label => labels.includes(label)))
+      return newNotes
+    })
 }
 
 function get(noteId) {
@@ -60,21 +73,73 @@ function getPrevNoteId(noteId) {
   })
 }
 
-// function _createCars() {
-//     let cars = utilService.loadFromStorage(CAR_KEY)
-//     if (!cars || !cars.length) {
-//         cars = []
-//         cars.push(_createCar('Audu Mea', 300))
-//         cars.push(_createCar('Fiak Ibasa', 120))
-//         cars.push(_createCar('Subali Pesha', 100))
-//         cars.push(_createCar('Mitsu Bashi', 150))
-//         utilService.saveToStorage(CAR_KEY, cars)
-//     }
-//     return cars
-// }
+function createNote(type, value) {
+  console.log(type, value)
+  const note = _getNoteData(type, value)
+  console.log(`note:`, note)
+  return save(note)
+    .then(response => { return response })
+}
 
-// function _createCar(vendor, maxSpeed = 250) {
-//     const car = getEmptyCar(vendor, maxSpeed)
-//     car.id = utilService.makeId()
-//     return car
-// }
+function _getNoteData(type, value) {
+
+  // const id = utilService.makeId()
+
+  if (type === 'txt') return {
+    // id,
+    type: 'note-txt',
+    isPinned: false,
+    info: {
+      title: value,
+      txt: '',
+      label: [],
+      style: {
+        backgroundColor: 'white'
+      }
+    }
+  }
+  else if (type === 'img') return {
+    // id,
+    type: 'note-img',
+    isPinned: false,
+    info: {
+      title: '',
+      url: value,
+      label: [],
+      style: {
+        backgroundColor: 'white'
+      }
+    }
+  }
+  else if (type === 'video') return {
+    // id,
+    type: 'note-video',
+    isPinned: false,
+    info: {
+      title: '',
+      url: value,
+      label: [],
+      style: {
+        backgroundColor: 'white'
+      }
+    }
+  }
+  else if (type === 'todos') return {
+    // id,
+    type: 'note-todos',
+    isPinned: false,
+    info: {
+      title: '',
+      label: [],
+      todos: value.split(',').map(todo => {
+        return {
+          txt: todo,
+          doneAt: null,
+        }
+      }),
+      style: {
+        backgroundColor: 'white'
+      }
+    }
+  }
+}
