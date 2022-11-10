@@ -39,12 +39,7 @@ function remove(emailId) {
 }
 
 function save(email) {
-  console.log(`email.id:`, email.id)
-  if (email.id) {
-    return storageService.put(EMAILS_KEY, email)
-  } else {
-    return storageService.post(EMAILS_KEY, email)
-  }
+  return storageService.post(EMAILS_KEY, email)
 }
 
 function _createEmails() {
@@ -53,6 +48,25 @@ function _createEmails() {
     emails = emailsData
     utilService.saveToStorage(EMAILS_KEY, emails)
     console.log(emails)
+  }
+}
+
+function _createEmail(subject, body, to) {
+  const email = getEmptyEmail(vendor, maxSpeed)
+  email.id = utilService.makeId()
+  return email
+}
+
+function getEmptyEmail(subject, body, to) {
+  return {
+    id: utilService.makeId(),
+    subject,
+    body,
+    isRead: null,
+    statut: 'sent',
+    sendAt: Date.now(),
+    from: { name: loggedinUser.fullname, emailAddress: loggedinUser.email },
+    to,
   }
 }
 
@@ -83,10 +97,4 @@ function getPrevEmailId(emailId) {
 //         utilService.saveToStorage(CAR_KEY, cars)
 //     }
 //     return cars
-// }
-
-// function _createCar(vendor, maxSpeed = 250) {
-//     const car = getEmptyCar(vendor, maxSpeed)
-//     car.id = utilService.makeId()
-//     return car
 // }

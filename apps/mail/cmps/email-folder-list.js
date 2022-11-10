@@ -1,6 +1,7 @@
 export default {
   template: `
     <section class="email-folder-list">
+        <button @click="composeEmail">Compose</button>
         <ul class="clean-list">
         <li @click="setFilterByStatus('inbox')">Inbox</li>
         <li @click="setFilterByStatus('sent')">Sent</li>
@@ -23,6 +24,10 @@ export default {
       this.filterByStatus.status = status
       console.log(status)
       this.$emit('filterByStatus', this.filterByStatus.status)
+    },
+    
+    composeEmail() {
+      this.$emit('composeEmail')
     },
   },
 }

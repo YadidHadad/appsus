@@ -2,15 +2,17 @@ import { emailService } from '../services/email.service.js'
 import emailList from '../cmps/email-list.cmp.js'
 import emailFilter from '../cmps/email-filter.cmp.js'
 import emailFolderList from '../cmps/email-folder-list.js'
+import emailCompose from '../cmps/email-compose.cms.js'
 
 export default {
   name: 'email-app',
   props: [],
   template: `
         <section class="app-container email-app">
+          <email-compose @sendMail="composeEmail" class="email-compose"/>
             <email-filter @filter="filter" class="search-filter filter"/>
             <email-folder-list @filterByStatus="filterStatus" class="email-folder-list"/>
-            <email-list  @remove="removeEmail" v-if="emails" :emails="emails"/>
+            <email-list @remove="removeEmail" v-if="emails" :emails="emails"/>
         </section>
         `,
 
@@ -56,13 +58,18 @@ export default {
         return emails
       })
     },
-  },
 
-  //   computed: {},
+    composeEmail(email) {
+      const { subject, to, body } = email
+      const newEmail = emailService.getEmptyEmail(subject, body, to)
+      emailService.save(newEmail).then((email) => this.emails.push(email))
+    },
+  },
 
   components: {
     emailList,
     emailFilter,
     emailFolderList,
+    emailCompose,
   },
 }
