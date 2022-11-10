@@ -2,6 +2,140 @@
   {
     "id": 101,
     "type": "note-todos",
+    "isPinned": false,
+    "info": {
+      "title": "Mom's birthday!",
+      "label": [
+        "family"
+      ],
+      "todos": [
+        {
+          "txt": "bake a cake!",
+          "doneAt": null
+        },
+        {
+          "txt": "is grandpa coming?",
+          "doneAt": 187111111
+        },
+        {
+          "txt": "buy balloons!",
+          "doneAt": 187111111
+        }
+      ],
+      "style": {
+        "backgroundColor": "#ff9aa2"
+      }
+    }
+  },
+  {
+    "id": 102,
+    "type": "note-img",
+    "isPinned": true,
+    "info": {
+      "title": "Mom's favorite cake!",
+      "url": "../assets/img/notes/cake.jpg",
+      "label": [
+        "family",
+        "friends"
+      ],
+      "style": {
+        "backgroundColor": "#ffb7b2"
+      }
+    }
+  },
+  {
+    "id": 103,
+    "type": "note-video",
+    "isPinned": false,
+    "info": {
+      "title": "do some exercise!",
+      "url": "https://www.youtube.com/embed/3p8EBPVZ2Iw",
+      "label": [
+        "work",
+        "critical"
+      ],
+      "style": {
+        "backgroundColor": "white"
+      }
+    }
+  },
+  {
+    "id": 104,
+    "type": "note-img",
+    "isPinned": true,
+    "info": {
+      "title": "Missing charlie!",
+      "url": "../assets/img/notes/dog.jpg",
+      "label": [
+        "family",
+        "friends",
+        "memories"
+      ],
+      "style": {
+        "backgroundColor": "white"
+      }
+    }
+  },
+  {
+    "id": 105,
+    "type": "note-todos",
+    "isPinned": false,
+    "info": {
+      "title": "learn vue!",
+      "label": [
+        "work",
+        "critical"
+      ],
+      "todos": [
+        {
+          "txt": "dynamic components",
+          "doneAt": null
+        },
+        {
+          "txt": "vue animations",
+          "doneAt": 187111111
+        }
+      ],
+      "style": {
+        "backgroundColor": "#ffdac1"
+      }
+    }
+  },
+  {
+    "id": 106,
+    "type": "note-txt",
+    "isPinned": true,
+    "info": {
+      "title": "chase my dreams",
+      "txt": "become a software developer!",
+      "label": [
+        "work",
+        "romantic"
+      ],
+      "style": {
+        "backgroundColor": "white"
+      }
+    }
+  },
+  {
+    "id": 107,
+    "type": "note-img",
+    "isPinned": false,
+    "info": {
+      "title": "buy pink shirt for wednesday",
+      "url": "../assets/img/notes/pink.jpg",
+      "label": [
+        "friends",
+        "romantic"
+      ],
+      "style": {
+        "backgroundColor": "#ffdac1"
+      }
+    }
+  },
+  {
+    "id": 101,
+    "type": "note-todos",
     "isPinned": true,
     "info": {
       "title": "Mom's birthday!",
@@ -21,10 +155,10 @@
           "txt": "buy balloons!",
           "doneAt": 187111111
         }
-      ]
-    },
-    "style": {
-      "backgroundColor": "white"
+      ],
+      "style": {
+        "backgroundColor": "white"
+      }
     }
   },
   {
@@ -33,29 +167,29 @@
     "isPinned": false,
     "info": {
       "title": "Mom's favorite cake!",
-      "url": "/assets/img/notes/cake.jpg",
+      "url": "../assets/img/notes/cake.jpg",
       "label": [
         "family",
         "friends"
       ],
       "style": {
-        "backgroundColor": "white"
+        "backgroundColor": "#b5ead7"
       }
     }
   },
   {
     "id": 103,
     "type": "note-video",
-    "isPinned": false,
+    "isPinned": true,
     "info": {
       "title": "do some exercise!",
-      "url": "https://www.youtube.com/watch?v=3p8EBPVZ2Iw",
+      "url": "https://www.youtube.com/embed/3p8EBPVZ2Iw",
       "label": [
         "work",
         "critical"
       ],
       "style": {
-        "backgroundColor": "white"
+        "backgroundColor": "#f9a52c"
       }
     }
   },
@@ -65,7 +199,7 @@
     "isPinned": false,
     "info": {
       "title": "Missing charlie!",
-      "url": "/assets/img/notes/dog.jpg",
+      "url": "../assets/img/notes/dog.jpg",
       "label": [
         "family",
         "friends",
@@ -95,26 +229,26 @@
           "txt": "vue animations",
           "doneAt": 187111111
         }
-      ]
-    },
-    "style": {
-      "backgroundColor": "white"
+      ],
+      "style": {
+        "backgroundColor": "#afefef"
+      }
     }
   },
   {
     "id": 106,
     "type": "note-txt",
-    "isPinned": true,
+    "isPinned": false,
     "info": {
       "title": "chase my dreams",
-      "txt": "beacome a software developer!",
+      "txt": "become a software developer!",
       "label": [
         "work",
         "romantic"
-      ]
-    },
-    "style": {
-      "backgroundColor": "white"
+      ],
+      "style": {
+        "backgroundColor": "white"
+      }
     }
   },
   {
@@ -123,14 +257,282 @@
     "isPinned": true,
     "info": {
       "title": "buy pink shirt for wednesday",
-      "url": "/assets/img/notes/pink.jpg",
+      "url": "../assets/img/notes/pink.jpg",
       "label": [
         "friends",
         "romantic"
-      ]
-    },
-    "style": {
-      "backgroundColor": "white"
+      ],
+      "style": {
+        "backgroundColor": "white"
+      }
+    }
+  },
+  {
+    "id": 101,
+    "type": "note-todos",
+    "isPinned": false,
+    "info": {
+      "title": "Mom's birthday!",
+      "label": [
+        "family"
+      ],
+      "todos": [
+        {
+          "txt": "bake a cake!",
+          "doneAt": null
+        },
+        {
+          "txt": "is grandpa coming?",
+          "doneAt": 187111111
+        },
+        {
+          "txt": "buy balloons!",
+          "doneAt": 187111111
+        }
+      ],
+      "style": {
+        "backgroundColor": "#ff9aa2"
+      }
+    }
+  },
+  {
+    "id": 102,
+    "type": "note-img",
+    "isPinned": true,
+    "info": {
+      "title": "Mom's favorite cake!",
+      "url": "../assets/img/notes/cake.jpg",
+      "label": [
+        "family",
+        "friends"
+      ],
+      "style": {
+        "backgroundColor": "#ffb7b2"
+      }
+    }
+  },
+  {
+    "id": 103,
+    "type": "note-video",
+    "isPinned": false,
+    "info": {
+      "title": "do some exercise!",
+      "url": "https://www.youtube.com/embed/3p8EBPVZ2Iw",
+      "label": [
+        "work",
+        "critical"
+      ],
+      "style": {
+        "backgroundColor": "white"
+      }
+    }
+  },
+  {
+    "id": 104,
+    "type": "note-img",
+    "isPinned": true,
+    "info": {
+      "title": "Missing charlie!",
+      "url": "../assets/img/notes/dog.jpg",
+      "label": [
+        "family",
+        "friends",
+        "memories"
+      ],
+      "style": {
+        "backgroundColor": "white"
+      }
+    }
+  },
+  {
+    "id": 105,
+    "type": "note-todos",
+    "isPinned": false,
+    "info": {
+      "title": "learn vue!",
+      "label": [
+        "work",
+        "critical"
+      ],
+      "todos": [
+        {
+          "txt": "dynamic components",
+          "doneAt": null
+        },
+        {
+          "txt": "vue animations",
+          "doneAt": 187111111
+        }
+      ],
+      "style": {
+        "backgroundColor": "#ffdac1"
+      }
+    }
+  },
+  {
+    "id": 106,
+    "type": "note-txt",
+    "isPinned": true,
+    "info": {
+      "title": "chase my dreams",
+      "txt": "become a software developer!",
+      "label": [
+        "work",
+        "romantic"
+      ],
+      "style": {
+        "backgroundColor": "white"
+      }
+    }
+  },
+  {
+    "id": 107,
+    "type": "note-img",
+    "isPinned": false,
+    "info": {
+      "title": "buy pink shirt for wednesday",
+      "url": "../assets/img/notes/pink.jpg",
+      "label": [
+        "friends",
+        "romantic"
+      ],
+      "style": {
+        "backgroundColor": "#ffdac1"
+      }
+    }
+  },
+  {
+    "id": 101,
+    "type": "note-todos",
+    "isPinned": true,
+    "info": {
+      "title": "Mom's birthday!",
+      "label": [
+        "family"
+      ],
+      "todos": [
+        {
+          "txt": "bake a cake!",
+          "doneAt": null
+        },
+        {
+          "txt": "is grandpa coming?",
+          "doneAt": 187111111
+        },
+        {
+          "txt": "buy balloons!",
+          "doneAt": 187111111
+        }
+      ],
+      "style": {
+        "backgroundColor": "white"
+      }
+    }
+  },
+  {
+    "id": 102,
+    "type": "note-img",
+    "isPinned": false,
+    "info": {
+      "title": "Mom's favorite cake!",
+      "url": "../assets/img/notes/cake.jpg",
+      "label": [
+        "family",
+        "friends"
+      ],
+      "style": {
+        "backgroundColor": "#b5ead7"
+      }
+    }
+  },
+  {
+    "id": 103,
+    "type": "note-video",
+    "isPinned": true,
+    "info": {
+      "title": "do some exercise!",
+      "url": "https://www.youtube.com/embed/3p8EBPVZ2Iw",
+      "label": [
+        "work",
+        "critical"
+      ],
+      "style": {
+        "backgroundColor": "#f9a52c"
+      }
+    }
+  },
+  {
+    "id": 104,
+    "type": "note-img",
+    "isPinned": false,
+    "info": {
+      "title": "Missing charlie!",
+      "url": "../assets/img/notes/dog.jpg",
+      "label": [
+        "family",
+        "friends",
+        "memories"
+      ],
+      "style": {
+        "backgroundColor": "white"
+      }
+    }
+  },
+  {
+    "id": 105,
+    "type": "note-todos",
+    "isPinned": true,
+    "info": {
+      "title": "learn vue!",
+      "label": [
+        "work",
+        "critical"
+      ],
+      "todos": [
+        {
+          "txt": "dynamic components",
+          "doneAt": null
+        },
+        {
+          "txt": "vue animations",
+          "doneAt": 187111111
+        }
+      ],
+      "style": {
+        "backgroundColor": "#afefef"
+      }
+    }
+  },
+  {
+    "id": 106,
+    "type": "note-txt",
+    "isPinned": false,
+    "info": {
+      "title": "chase my dreams",
+      "txt": "become a software developer!",
+      "label": [
+        "work",
+        "romantic"
+      ],
+      "style": {
+        "backgroundColor": "white"
+      }
+    }
+  },
+  {
+    "id": 107,
+    "type": "note-img",
+    "isPinned": true,
+    "info": {
+      "title": "buy pink shirt for wednesday",
+      "url": "../assets/img/notes/pink.jpg",
+      "label": [
+        "friends",
+        "romantic"
+      ],
+      "style": {
+        "backgroundColor": "white"
+      }
     }
   }
 ]

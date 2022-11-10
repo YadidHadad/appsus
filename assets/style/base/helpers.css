@@ -28,6 +28,9 @@
 .flex.gap {
   gap: 0.5rem;
 }
+.flex.wrap{
+    flex-wrap: wrap;
+}
 
 /* text helpers */
 
@@ -65,6 +68,34 @@
   content: '\f1b4';
 }
 .fa.navbar-icon::before {
-  content: '\f0c9';
-  font-size: 2rem;
+    content: "\f0c9";
+    font-size: 2rem;
+}
+.fa.text-icon::before {
+    content: "\f031";
+    font-size: 1.5rem;
+}
+.fa.img-icon::before {
+    content: "\f03e";
+    font-size: 1.5rem;
+}
+.fa.video-icon::before {
+    content: "\f03d";
+    font-size: 1.5rem;
+}
+.fa.list-icon::before {
+    content: "\f03a";
+    font-size: 1.5rem;
+}
+.fa.pin-icon::before {
+    content: "\f276";
+    font-size: 1rem;
+
+    /* text-align: center; */
+}
+/* center */
+
+.center{
+    margin-left: 50%;
+    transform: translate(-50%);
 }

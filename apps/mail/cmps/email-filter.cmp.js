@@ -24,12 +24,4 @@ export default {
     },
   },
 
-  //   watch: {
-  //     filterBy: {
-  //       handler() {
-  //         console.log('Something changed')
-  //       },
-  //       deep: true,
-  //     },
-  //   },
 }

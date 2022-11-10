@@ -3,8 +3,6 @@ import { storageService } from '../../../services/async-storage.service.js'
 
 import notesData from '../../../data/notes.json' assert { type: 'json' }
 
-console.log(`gNotes:`, notesData)
-
 const NOTES_KEY = 'notesDB'
 
 _createNotes()
@@ -23,7 +21,6 @@ function query() {
 }
 
 function get(noteId) {
-  console.log(`noteId:`, noteId)
   return storageService.get(NOTES_KEY, noteId)
 }
 
@@ -32,7 +29,6 @@ function remove(noteId) {
 }
 
 function save(note) {
-  console.log(`note.id:`, note.id)
   if (note.id) {
     return storageService.put(NOTES_KEY, note)
   } else {
@@ -42,7 +38,6 @@ function save(note) {
 
 function _createNotes() {
   let notes = utilService.loadFromStorage(NOTES_KEY)
-  console.log(notes)
   if (!notes || !notes.length) {
     notes = notesData
     utilService.saveToStorage(NOTES_KEY, notesData)

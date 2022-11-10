@@ -3,7 +3,6 @@ import appNavbar from "./app-navbar.cmp.js"
 
 export default {
     template: `
-        <header class="app-header flex row justify-between align-center">
             <div class="logo flex row align-center justify-center">
                 <img v-if="appOpen === '/email' " src="/assets/img/header/Gmail_icon_(2020).svg.png" alt="" />
                 <img v-if="appOpen === '/note'" src="/assets/img/header/Google_Keep_icon_(2020).svg.png" alt="" />
@@ -14,9 +13,7 @@ export default {
             <div @click="isNavShown = !isNavShown"><h1 class="fa navbar-icon"></h1></div>
 
             <app-navbar v-if="isNavShown === true"></app-navbar>
- 
-        </header>
-    `,
+     `,
     data() {
         return {
             isNavShown: false,
