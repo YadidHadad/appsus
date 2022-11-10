@@ -16,10 +16,8 @@ export default {
                 <div @click="closeNote">close</div>
                 <div>color</div>
                 <div @click="removeNote">remove</div>
-                <!-- /:subject?/:body? -->
-                <router-link  :to="'/email/' + email.subject + '/'+ email.body + ''"> <email-preview :email="email"/>dgggs</router-link>
+                <router-link  :to="'/email/' + email.subject + '/'+ email.body + ''"> <email-preview :email="email"/>send as email</router-link>
 
-                <div>send as email</div>
             </div>
             <section v-if="note.type === 'note-img'">
                 <img class="image-container "  :style="{ backgroundImage: 'url(' + note.info.url + ')' }"/>    

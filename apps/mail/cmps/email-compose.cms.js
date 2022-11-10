@@ -21,6 +21,9 @@ export default {
   },
   created() {
     console.log(this.urlInfo)
+
+    if (this.urlInfo.subject !== 'undefined') this.newMail.subject = this.urlInfo.subject
+    if (this.urlInfo.body !== 'undefined') this.newMail.body = this.urlInfo.body
   },
   methods: {
     sendMail() {
