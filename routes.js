@@ -32,23 +32,15 @@ const routerOptions = {
 			component: emailDetails,
 		},
 		{
-			// 	path: '/email/:subject?',
-			// 	component: emailDetails,
-			// },
-			// {
-			// 	path: '/email/:body?',
-			// 	component: emailDetails,
-		},
-		// {
-		// 	path: '/email/:id',
-		// 	component: emailCompose,
-		// },
-		{
 			path: '/note',
 			component: noteIndex,
 		},
 		{
 			path: '/note/:id',
+			component: noteIndex,
+		},
+		{
+			path: '/email/:title?/:txt?',
 			component: noteIndex,
 		},
 
