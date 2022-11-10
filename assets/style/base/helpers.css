@@ -4,67 +4,67 @@
   display: flex;
 }
 
-.flex.flex-column{
-    flex-direction: column;
+.flex.flex-column {
+  flex-direction: column;
 }
 
-.flex.justify-center{
-    justify-content: center;
+.flex.justify-center {
+  justify-content: center;
 }
 
-.flex.justify-between{
-    justify-content: space-between;
+.flex.justify-between {
+  justify-content: space-between;
 }
 
-.flex.align-center{
-    align-items: center;
+.flex.align-center {
+  align-items: center;
 }
-.flex.row{
-    flex-direction: row;
+.flex.row {
+  flex-direction: row;
 }
-.flex.column{
-    flex-direction: column;
+.flex.column {
+  flex-direction: column;
 }
-.flex.gap{
-    gap: 0.5rem;
+.flex.gap {
+  gap: 0.5rem;
 }
 
 /* text helpers */
 
 .colored-text {
-    color: solid var(--clr5);
+  color: solid var(--clr5);
 }
 
 /* list helpers */
 
 .clean-list {
-    padding: 0;
-    margin: 0;
-    list-style-type: none;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
 }
 
 /* font awsome */
 
 .fa {
-    font-family: fa;
+  font-family: fa;
 }
 
 .fa.fa-facebook::before {
-    content: "\f39e";
+  content: '\f39e';
 }
 
 .fa.fa-twitter::before {
-    content: "\f099";
+  content: '\f099';
 }
 
 .fa.fa-dribbble::before {
-    content: "\f17d";
+  content: '\f17d';
 }
 
 .fa.fa-behance::before {
-    content: "\f1b4";
+  content: '\f1b4';
 }
 .fa.navbar-icon::before {
-    content: "\f0c9";
-    font-size: 2rem;
+  content: '\f0c9';
+  font-size: 2rem;
 }

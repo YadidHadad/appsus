@@ -1,0 +1,45 @@
+.email-list ul {
+  width: 80%;
+}
+
+.email-list ul li {
+  border-bottom: 1px solid var(--clr3);
+}
+.email-list ul li:hover {
+  -webkit-box-shadow: 0px 1px 6px 4px rgba(0, 0, 0, 0.63);
+  box-shadow: 0px 1px 6px 4px rgba(0, 0, 0, 0.63);
+}
+
+.email-preview {
+  padding: 0.5rem;
+}
+.email-list .remove-btn {
+  width: 0.5rem !important; 
+  height: 0.5rem !important;
+  border: unset;
+  padding: 0;
+  display: none;
+  position:absolute;
+  right: 15rem;
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0);
+}
+.email-list .remove-btn::after{
+  content: '\f2ed';
+}
+
+
+.email-list ul li:hover .remove-btn{ 
+	display:inline-block;
+}
+.remove-btn :hover { 
+  border-radius: 50px;
+}
+
+
+.unread {
+  color: black;
+}
+.read {
+  background-color: var(--input);
+}

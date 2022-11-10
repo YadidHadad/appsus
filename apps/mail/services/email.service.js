@@ -1,7 +1,6 @@
 import { utilService } from '../../../services/util.service.js'
 import { storageService } from '../../../services/async-storage.service.js'
 import emailsData from '../../../data/email.json' assert { type: 'json' }
-console.log(emailsData);
 
 const EMAILS_KEY = 'emailsDB'
 const loggedinUser = { email: 'user@appsus.com', fullname: 'Mahatma Appsus' }
@@ -16,8 +15,16 @@ export const emailService = {
   getPrevEmailId,
 }
 
-function query() {
-  return storageService.query(EMAILS_KEY)
+function query(filterBy) {
+  return storageService.query(EMAILS_KEY).then((emails) => {
+    const regex = new RegExp(filterBy.text, 'i')
+    let newEmails = emails.filter((email) => regex.test(email.subject))
+    if (filterBy.isRead != "all") {
+      newEmails = newEmails.filter((email) => (filterBy.isRead ? email.isRead : !email.isRead))
+    }
+
+    return newEmails
+  })
 }
 
 function get(emailId) {

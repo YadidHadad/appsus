@@ -2,9 +2,10 @@ export default {
   template: `
 <section class="email-filter">
       <input @input="filter" v-model="filterBy.text" type="search" placeholder="Search mail" />
-    <select @change="filter" v-model="filterBy.isRead" >
+    <select @change="filter" v-model="filterBy.isRead">
+      <option value="all">All</option>
       <option value="true">Read</option>
-      <option value=''>Unread</option>
+      <option value="">Unread</option>
     </select>
 </section>
     `,
@@ -12,7 +13,7 @@ export default {
     return {
       filterBy: {
         text: '',
-        isRead: '',
+        isRead: 'all',
       },
     }
   },

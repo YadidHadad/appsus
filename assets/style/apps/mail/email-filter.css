@@ -1,0 +1,16 @@
+.email-filter{
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    margin-inline-start: 8rem;
+}
+
+
+.email-filter input {
+    padding: 0.5rem;
+    border-radius: 100px;
+}
+.email-filter select {
+    padding: 0.5rem;
+    border-radius: 40px;
+}

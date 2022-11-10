@@ -1,51 +1,58 @@
 import { emailService } from '../services/email.service.js'
 import emailList from '../cmps/email-list.cmp.js'
 import emailFilter from '../cmps/email-filter.cmp.js'
+
 export default {
-    name: 'email-app',
-    props: [],
-    template: `
+  name: 'email-app',
+  props: [],
+  template: `
         <section class="email-section">
-            <h1>email</h1>
             <email-filter @filter="filter"/>
-            <email-list v-if="emails"/>
+            <email-list @remove="removeEmail" v-if="emails" :emails="emails"/>
         </section>
         `,
 
-    data() {
-        return {
-            emails: null,
+  data() {
+    return {
+      emails: null,
+      filterBy: {
+        text: "",
+        isRead: 'all',
+      },
+    }
+  },
 
-            filterBy: {
-                text: '',
-                isRead: '',
-            },
-        }
-    },
+  created() {
+    this.emailsToShow({ ...this.filterBy }).then((emails) => {
+      this.emails = emails
+      console.log(emails)
+    })
+  },
 
-    created() {
-        emailService.query().then((emails) => (this.emails = emails))
+  methods: {
+    filter(filterBy) {
+      console.log(filterBy)
+      this.filterBy = filterBy
+      this.emailsToShow(this.filterBy)
     },
+    removeEmail(emailId) {
+      emailService.remove(emailId).then(() => {
+        const idx = this.emails.findIndex((email) => email.id === emailId)
+        this.emails.splice(idx, 1)
+      })
+    },
+    emailsToShow(filterBy) {
+      return emailService.query(filterBy).then((emails) => {
+        this.emails = emails
+        return emails
+      })
+    },
+  },
 
-    methods: {
-        filter(filterBy) {
-            console.log(filterBy)
-            this.filterBy = filterBy
-        },
-    },
+  //   computed: {},
 
-    computed: {
-        emailsToShow() {
-            if (!this.filterBy) return this.emails
-            const { text, isRead } = this.filterBy
-            const regex = new RegExp(text, 'i')
-            let emails = this.emails.filter((email) => regex.test(email.subject))
-            emails = emails.filter((email) => (isRead ? email.isRead : !email.isRead))
-        },
-    },
-
-    components: {
-        emailList,
-        emailFilter,
-    },
+  components: {
+    emailList,
+    emailFilter,
+  },
 }
