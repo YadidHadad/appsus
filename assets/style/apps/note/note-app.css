@@ -1,18 +1,7 @@
-/* .note-app{
-    margin-block-start: 80px;
-    overflow-y:auto;
-    overflow-x: none;
-    height: calc(100vh - 80px);
-    background-color: var(--clr--1);
-} */
-
-
 
 .note-list{
-    column-count: 5;
     column-gap: 2rem;
     margin-inline: 5rem;
-
 }
 
 .note-img,
@@ -26,24 +15,20 @@
     background-color: var(--clr1);
     text-align: center;
 }
+
 .note-img:hover,
 .note-txt:hover,
 .note-video:hover,
 .note-todos:hover{
  
-        border: 1px solid var(--clr--3);
-        outline: 5px solid var(--clr--3);
-
-        transform: rotate(0deg);
-        z-index: 10;
-
-    
+    border: 1px solid var(--clr--3);
+    outline: 5px solid var(--clr--3);
+    transform: rotate(0deg);
+    z-index: 10;
 }
 
 .note-img  img{
     margin-bottom: 5rem;
-    /* border-radius: 0.5rem; */
-
 }
 
 .image-container{
@@ -53,7 +38,6 @@
     background-repeat: no-repeat;
     border-radius: 0.5rem 0.5rem 0 0;
     border-bottom: 1px solid var(--clr3);
-
 }
 
 .note-preview{
@@ -66,31 +50,20 @@
 
 .note-preview p,
 .note-preview h5{
-padding: 0.5rem;
+    padding: 0.5rem;
 }
-
-/* .note-filter input{
-    z-index: 10;
-    margin-inline-start: 250px ;
-    width: calc(100% - 350px);
-    max-width: 680px;
-    background-color: var(--clr--2);
-    border: none;
-    border-radius: 0.5rem;
-    position: fixed;
-    top: 1.3rem;
-} */
 
 .note-add{
     margin-left: 50%;
     transform: translate(-50%);
     color: var(--clr3);
-    width: 500px;
+    max-width: 500px;
     margin-block: 2rem;
     border: 1px solid var(--clr2);
     border-radius: 0.5rem;
     box-shadow: 1px 1px 5px 0px var(--clr2);
     background-color: var(--clr1);
+    flex-direction: column;
 }
 
 .note-add:hover{
@@ -118,7 +91,6 @@ textarea:focus, input:focus{
 
 .rotate{
     transform: rotate(45deg);
-
 }
 
 .note-todos ul {
@@ -130,7 +102,6 @@ textarea:focus, input:focus{
     list-style: square inside;
 }
 
-/* ::placeholder, */
 .note-preview p::first-letter,
 .note-preview li::first-letter {
    text-transform: capitalize;
@@ -148,6 +119,7 @@ textarea:focus, input:focus{
     padding-bottom: 56.25%;
     border-radius: 0 0 0.5rem 0.5rem;
 }
+
 .video {
     position: absolute;
     top: 0;
@@ -159,7 +131,6 @@ textarea:focus, input:focus{
 
 .pinned{
     position: absolute;
-    /* top: -0.5rem; */
     color: black;
     z-index: 100;
     top: -1rem;
@@ -168,8 +139,70 @@ textarea:focus, input:focus{
 .fade{
     opacity: 0.5;
 }
+
 .selectedNoteType,
 .fade:hover{
     opacity: 1;
     color: black;
+}
+
+/* -----------RESPONSIVE----------- */
+
+@media  (max-width: 780px) {
+
+    .note-add{
+        flex-direction: column;
+        margin-inline: 2rem;
+        width: calc(100% - 4rem);
+        transform: none;
+    }
+    .btns-container{
+        display: flex;
+        justify-content: space-around;
+    }
+
+    
+}
+
+@media  (max-width: 480px) {
+    .note-list{
+        column-count: 1;
+    }
+
+    .note-add{
+        flex-direction: column;
+    }
+    .btns-container{
+        display: flex;
+        justify-content: space-around;
+    }
+}
+
+@media  (min-width: 480px) {
+    .note-list{
+        column-count: 2;
+    }
+
+}
+
+@media  (min-width: 780px) {
+    .note-list{
+        column-count: 3;
+    }
+
+    .note-add{
+        flex-direction: row;
+    }
+}
+
+@media  (min-width: 1025px) {
+    .note-list{
+        column-count: 4;
+    }
+}
+
+@media  (min-width: 1200px) {
+    .note-list{
+        column-count: 5;
+    }
 }

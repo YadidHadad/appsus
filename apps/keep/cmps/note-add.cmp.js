@@ -4,24 +4,21 @@ export default {
     name: 'note-add',
     props: [],
     template: `
-        <form class="note-add flex row "  @submit.prevent="createNote">
+        <form class="note-add flex "  @submit.prevent="createNote">
             <input type="text" :placeholder="placeholder" v-model="note.value"  ref="name" />
-            <div class="flex row align-center">
+            <div class="flex row align-center btns-container">
                 <div :class="{selectedNoteType : note.type==='txt' }">
                     <span @click="setNoteType('txt')" class="fa text-icon add-btn"></span>
                 </div>                    
-            <div :class="{selectedNoteType : note.type==='img' }">
-                <span @click="setNoteType('img')" class="fa img-icon add-btn" ></span>
-            </div>
-            <div :class="{selectedNoteType : note.type==='video' }">
-                <span @click="setNoteType('video')" class="fa video-icon add-btn" ></span>
-            </div>
-            <div :class="{selectedNoteType : note.type==='todos' }">
-                <span @click="setNoteType('todos')" class="fa list-icon add-btn" ></span>
-            </div>
-            </div>
-            <div class="note-create">
-
+                <div :class="{selectedNoteType : note.type==='img' }">
+                    <span @click="setNoteType('img')" class="fa img-icon add-btn" ></span>
+                </div>
+                <div :class="{selectedNoteType : note.type==='video' }">
+                    <span @click="setNoteType('video')" class="fa video-icon add-btn" ></span>
+                </div>
+                <div :class="{selectedNoteType : note.type==='todos' }">
+                    <span @click="setNoteType('todos')" class="fa list-icon add-btn" ></span>
+                </div>
             </div>
         </form>
         `,
@@ -57,24 +54,15 @@ export default {
             }
         },
         createNote() {
-
-            var newNote
             var type = this.note.type
             var value = this.note.value
 
-            console.log('create note')
-            console.log(this.note.value)
-
-            const note = noteService.createNote(type, value)
+            noteService.createNote(type, value)
                 .then(response => {
                     console.log(response)
-                    newNote = response
                     this.$emit('newNote', response)
                 })
-
-            // console.log(note)
-
-
+            this.note.value = ''
 
         }
 
