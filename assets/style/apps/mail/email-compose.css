@@ -1,0 +1,18 @@
+.email-compose {
+  background-color: rgb(182, 190, 190);
+  position: fixed;
+  z-index: 20;
+  right: 5rem;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.email-compose textarea {
+  padding: 30%;
+}
+.email-compose button {
+  width: fit-content;
+  
+}

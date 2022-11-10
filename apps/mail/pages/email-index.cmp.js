@@ -9,9 +9,9 @@ export default {
   props: [],
   template: `
         <section class="app-container email-app">
-          <email-compose @sendMail="composeEmail" class="email-compose"/>
+          <email-compose v-if="isComposeOpen" @sendMail="composeEmail" @close="openEmailCompose" class="email-compose"/>
             <email-filter @filter="filter" class="search-filter filter"/>
-            <email-folder-list @filterByStatus="filterStatus" class="email-folder-list"/>
+            <email-folder-list @filterByStatus="filterStatus" @composeEmail="openEmailCompose" class="email-folder-list"/>
             <email-list @remove="removeEmail" v-if="emails" :emails="emails"/>
         </section>
         `,
@@ -19,11 +19,13 @@ export default {
   data() {
     return {
       emails: null,
+
       filterBy: {
         text: '',
         isRead: 'all',
         status: null,
       },
+      isComposeOpen: false,
     }
   },
 
@@ -63,6 +65,10 @@ export default {
       const { subject, to, body } = email
       const newEmail = emailService.getEmptyEmail(subject, body, to)
       emailService.save(newEmail).then((email) => this.emails.push(email))
+      console.log(this.emails)
+    },
+    openEmailCompose() {
+      this.isComposeOpen = !this.isComposeOpen
     },
   },
 

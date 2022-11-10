@@ -13,6 +13,7 @@ export const emailService = {
   save,
   getNextEmailId,
   getPrevEmailId,
+  getEmptyEmail,
 }
 
 function query(filterBy) {
@@ -63,7 +64,7 @@ function getEmptyEmail(subject, body, to) {
     subject,
     body,
     isRead: null,
-    statut: 'sent',
+    status:'sent',
     sendAt: Date.now(),
     from: { name: loggedinUser.fullname, emailAddress: loggedinUser.email },
     to,
