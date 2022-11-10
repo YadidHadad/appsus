@@ -9,7 +9,7 @@ export default {
   props: [],
   template: `
         <section class="app-container email-app">
-          <email-compose v-if="isComposeOpen" @sendMail="composeEmail" @close="openEmailCompose" class="email-compose"/>
+            <email-compose v-if="isComposeOpen" @sendMail="composeEmail" @sendToNote="sendToNote" @close="openEmailCompose" class="email-compose"/>
             <email-filter @filter="filter" class="search-filter filter"/>
             <email-folder-list @filterByStatus="filterStatus" @composeEmail="openEmailCompose" class="email-folder-list"/>
             <email-list @remove="removeEmail" v-if="emails" :emails="emails"/>
@@ -60,7 +60,9 @@ export default {
         return emails
       })
     },
-
+    sendToNote(email) {
+      emailService.sendEmailToNote(email)
+    },
     composeEmail(email) {
       const { subject, to, body } = email
       const newEmail = emailService.getEmptyEmail(subject, body, to)

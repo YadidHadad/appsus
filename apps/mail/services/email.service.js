@@ -14,6 +14,7 @@ export const emailService = {
   getNextEmailId,
   getPrevEmailId,
   getEmptyEmail,
+  sendEmailToNote,
 }
 
 function query(filterBy) {
@@ -65,7 +66,7 @@ function getEmptyEmail(subject, body, to) {
     body,
     isRead: null,
     status: 'sent',
-    sendAt: Date.now(),
+    sentAt: Date.now(),
     from: { name: loggedinUser.fullname, emailAddress: loggedinUser.email },
     to,
   }
@@ -87,25 +88,14 @@ function getPrevEmailId(emailId) {
   })
 }
 
-// function _createCars() {
-//     let cars = utilService.loadFromStorage(CAR_KEY)
-//     if (!cars || !cars.length) {
-//         cars = []
-//         cars.push(_createCar('Audu Mea', 300))
-//         cars.push(_createCar('Fiak Ibasa', 120))
-//         cars.push(_createCar('Subali Pesha', 100))
-//         cars.push(_createCar('Mitsu Bashi', 150))
-//         utilService.saveToStorage(CAR_KEY, cars)
-//     }
-//     return cars
-// }
-
-function onSetFilterBy(filterBy) {
-  filterBy = setBookFilter(filterBy)
-  _renderBooks()
-
-  const queryStringParams = `?minRate=${filterBy.minRate}&maxPrice=${filterBy.maxPrice}&txt=${filterBy.txt}`
-  const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + queryStringParams
+function sendEmailToNote(email) {
+  const queryStringParams = `?subject=${email.subject}&body=${email.body}`
+  const newUrl =
+    window.location.protocol +
+    '//' +
+    window.location.host +
+    window.location.pathname +
+    queryStringParams
   window.history.pushState({ path: newUrl }, '', newUrl)
 }
 
@@ -114,7 +104,7 @@ function _renderFilterByQueryStringParams() {
   const filterBy = {
     txt: queryStringParams.get('name') || '',
     minRate: +queryStringParams.get('minRate') || 0,
-    maxPrice: +queryStringParams.get('maxPrice') || 100
+    maxPrice: +queryStringParams.get('maxPrice') || 100,
   }
 
   if (!filterBy.txt && !filterBy.minRate && !filterBy.maxPrice) return
@@ -123,4 +113,4 @@ function _renderFilterByQueryStringParams() {
   document.querySelector('.filter-rate-range').value = filterBy.minRate
   document.querySelector('.filter-price-range').value = filterBy.maxPrice
   setBookFilter(filterBy)
-} v
+}

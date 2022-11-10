@@ -1,5 +1,5 @@
 .email-compose {
-  background-color: rgb(182, 190, 190);
+  background-color:var(--clr--1);
   position: fixed;
   z-index: 20;
   right: 5rem;
