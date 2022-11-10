@@ -123,4 +123,4 @@ function _renderFilterByQueryStringParams() {
   document.querySelector('.filter-rate-range').value = filterBy.minRate
   document.querySelector('.filter-price-range').value = filterBy.maxPrice
   setBookFilter(filterBy)
-} v
+} 

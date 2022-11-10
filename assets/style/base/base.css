@@ -1,10 +1,10 @@
 * {
   box-sizing: border-box;
 }
-
+/* 
 html {
   
-}
+} */
 
 body {
   min-width: 320px;
@@ -65,3 +65,19 @@ button {
   outline: 1px solid gold
 }
 
+.screen{
+  margin-block-start: 80px;
+  background-color: gold;
+  /* position: fixed; */
+  width: 100% !important;
+  /* display: none; */
+  /* z-index: 500; */
+  height: calc(100vh - 80px);
+  opacity: 0.5;
+}
+@media  (max-width: 780px) {
+  .screen{
+      margin-block-start: 160px;
+      height: calc(100vh - 160px);
+  }
+}
