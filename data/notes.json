@@ -33,7 +33,7 @@
     "isPinned": true,
     "info": {
       "title": "Mom's favorite cake!",
-      "url": "/assets/img/notes/cake.jpg",
+      "url": "../assets/img/notes/cake.jpg",
       "label": [
         "family",
         "friends"
@@ -65,7 +65,7 @@
     "isPinned": true,
     "info": {
       "title": "Missing charlie!",
-      "url": "/assets/img/notes/dog.jpg",
+      "url": "../assets/img/notes/dog.jpg",
       "label": [
         "family",
         "friends",
@@ -123,7 +123,7 @@
     "isPinned": false,
     "info": {
       "title": "buy pink shirt for wednesday",
-      "url": "/assets/img/notes/pink.jpg",
+      "url": "../assets/img/notes/pink.jpg",
       "label": [
         "friends",
         "romantic"
@@ -167,7 +167,7 @@
     "isPinned": false,
     "info": {
       "title": "Mom's favorite cake!",
-      "url": "/assets/img/notes/cake.jpg",
+      "url": "../assets/img/notes/cake.jpg",
       "label": [
         "family",
         "friends"
@@ -199,7 +199,7 @@
     "isPinned": false,
     "info": {
       "title": "Missing charlie!",
-      "url": "/assets/img/notes/dog.jpg",
+      "url": "../assets/img/notes/dog.jpg",
       "label": [
         "family",
         "friends",
@@ -257,7 +257,7 @@
     "isPinned": true,
     "info": {
       "title": "buy pink shirt for wednesday",
-      "url": "/assets/img/notes/pink.jpg",
+      "url": "../assets/img/notes/pink.jpg",
       "label": [
         "friends",
         "romantic"
@@ -301,7 +301,7 @@
     "isPinned": true,
     "info": {
       "title": "Mom's favorite cake!",
-      "url": "/assets/img/notes/cake.jpg",
+      "url": "../assets/img/notes/cake.jpg",
       "label": [
         "family",
         "friends"
@@ -333,7 +333,7 @@
     "isPinned": true,
     "info": {
       "title": "Missing charlie!",
-      "url": "/assets/img/notes/dog.jpg",
+      "url": "../assets/img/notes/dog.jpg",
       "label": [
         "family",
         "friends",
@@ -391,7 +391,7 @@
     "isPinned": false,
     "info": {
       "title": "buy pink shirt for wednesday",
-      "url": "/assets/img/notes/pink.jpg",
+      "url": "../assets/img/notes/pink.jpg",
       "label": [
         "friends",
         "romantic"
@@ -435,7 +435,7 @@
     "isPinned": false,
     "info": {
       "title": "Mom's favorite cake!",
-      "url": "/assets/img/notes/cake.jpg",
+      "url": "../assets/img/notes/cake.jpg",
       "label": [
         "family",
         "friends"
@@ -467,7 +467,7 @@
     "isPinned": false,
     "info": {
       "title": "Missing charlie!",
-      "url": "/assets/img/notes/dog.jpg",
+      "url": "../assets/img/notes/dog.jpg",
       "label": [
         "family",
         "friends",
@@ -525,7 +525,7 @@
     "isPinned": true,
     "info": {
       "title": "buy pink shirt for wednesday",
-      "url": "/assets/img/notes/pink.jpg",
+      "url": "../assets/img/notes/pink.jpg",
       "label": [
         "friends",
         "romantic"
