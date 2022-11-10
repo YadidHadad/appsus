@@ -51,10 +51,6 @@ export default {
             this.$router.push(`/note/${note.id}`)
             this.$emit('selectedNoteToShow', { ...note })
         },
-        removeNote() {
-            console.log(note)
-
-        }
     },
 
     computed: {

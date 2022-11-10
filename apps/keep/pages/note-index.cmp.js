@@ -12,11 +12,17 @@ export default {
         <section class="app-container">
             <note-filter class="search-filter" @filterTitle="setFilterTitle" />
             <note-add class="" @newNote="addNewNote"/>
-            <!-- <note-details v-if="selectedNote" :note="selectedNote"/> -->
+            
+            <note-details 
+                v-if="selectedNote" 
+                :note="selectedNote"
+                @noteToRemove="removeNote"
+                @unselectNote="resetSelectedNote"/>
+
             <note-list 
-                v-if="notes"
-                :notes="notes"
-                @selectedNoteToShow="setSelectedNote" />
+            v-if="notes"
+            :notes="notes"
+            @selectedNoteToShow="setSelectedNote" />
         </section>
 
         `,
@@ -58,6 +64,15 @@ export default {
         setSelectedNote(note) {
             this.selectedNote = note
 
+        },
+        resetSelectedNote() {
+            console.log('close')
+            this.selectedNote = null
+
+        },
+        removeNote(noteId) {
+            const idx = this.notes.findIndex(note => note.id === noteId)
+            this.notes = this.notes.splice(idx, 1)
         }
     },
 

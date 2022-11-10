@@ -9,7 +9,7 @@ export default {
   props: [],
   template: `
         <section class="app-container email-app">
-            <email-compose v-if="isComposeOpen" @sendMail="composeEmail" @sendToNote="sendToNote" @close="openEmailCompose" class="email-compose"/>
+            <email-compose v-if="isComposeOpen" @sendMail="composeEmail" @close="openEmailCompose" class="email-compose" :urlInfo="urlInfo"/>
             <email-filter @filter="filter" class="search-filter filter"/>
             <email-folder-list @filterByStatus="filterStatus" @composeEmail="openEmailCompose" class="email-folder-list"/>
             <email-list @remove="removeEmail" v-if="emails" :emails="emails"/>
@@ -26,6 +26,11 @@ export default {
         status: null,
       },
       isComposeOpen: false,
+      urlInfo: {
+        subject: this.$route.params.subject,
+        body: this.$route.params.body,
+
+      }
     }
   },
 
@@ -34,6 +39,14 @@ export default {
       this.emails = emails
       console.log(emails)
     })
+
+    console.log(this.$route)
+
+
+    if (this.$route.params.subject || this.$route.params.body) {
+      console.log(this.$route.params.subject, this.$route.params.body)
+      this.isComposeOpen = true
+    }
   },
 
   methods: {

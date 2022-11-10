@@ -24,10 +24,21 @@ const routerOptions = {
 			component: emailIndex,
 		},
 		{
+			path: '/email/:subject?/:body?',
+			component: emailIndex,
+		},
+		{
 			path: '/email/:id',
 			component: emailDetails,
 		},
-
+		{
+			// 	path: '/email/:subject?',
+			// 	component: emailDetails,
+			// },
+			// {
+			// 	path: '/email/:body?',
+			// 	component: emailDetails,
+		},
 		// {
 		// 	path: '/email/compose',
 		// 	component: emailCompose,

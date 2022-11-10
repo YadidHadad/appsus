@@ -1,5 +1,6 @@
 export default {
   name: 'email-compose',
+  props: ['urlInfo'],
   template: `
     <form @submit.prevent="sendMail">
       <h3>New Message <button @click="close">X</button></h3>
@@ -20,11 +21,12 @@ export default {
       },
     }
   },
+  created() {
+    console.log(this.urlInfo)
 
-  created(){
-
+    if (this.urlInfo.subject !== 'undefined') this.newMail.subject = this.urlInfo.subject
+    if (this.urlInfo.body !== 'undefined') this.newMail.body = this.urlInfo.body
   },
-
   methods: {
     sendMail() {
       this.$emit('sendMail', { ...this.newMail })
