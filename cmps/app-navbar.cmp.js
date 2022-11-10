@@ -28,14 +28,14 @@ export default {
     },
     methods: {
         setActiveApp(app) {
+            if (!['Home', 'Books', 'Notes', 'Email'].includes(app)) return
+
+            console.log(!['Home', 'Books', 'Notes', 'Email'].includes(app))
             console.log(app)
             this.activeApp = app
             this.$emit('setApp', this.activeApp)
 
         }
-
-
-
     },
     computed: {},
 }

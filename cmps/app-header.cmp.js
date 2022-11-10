@@ -4,8 +4,8 @@ import appNavbar from "./app-navbar.cmp.js"
 export default {
     template: `
             <div class="logo flex row align-center justify-center" >
-                <img v-if="appOpen === '/email' " src="../assets/img/header/gmail.png" alt="" />
-                <img v-if="appOpen === '/note'" src="../assets/img/header/keep.png" alt="" />
+                <img v-if="appOpen.startsWith('/email')" src="../assets/img/header/gmail.png" alt="" />
+                <img v-if="appOpen.startsWith('/note')" src="../assets/img/header/keep.png" alt="" />
                 <img v-if="appOpen === '/'" src="../assets/img/header/home.svg" alt="" />
                 <img v-if="appOpen === '/books'" src="../assets/img/header/scholar.png" alt="" />
                 <h1><span>AppSus</span><span class="app-type">{{activeApp}}</span></h1>
