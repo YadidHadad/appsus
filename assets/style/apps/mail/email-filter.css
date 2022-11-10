@@ -1,12 +1,15 @@
 .email-filter{
     display: flex;
     gap: 1rem;
-    margin-bottom: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
     margin-inline-start: 8rem;
 }
 
 
 .email-filter input {
+    width: 60%;
     padding: 0.5rem;
     border-radius: 100px;
 }

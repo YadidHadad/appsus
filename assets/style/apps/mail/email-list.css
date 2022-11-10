@@ -41,5 +41,5 @@
   color: black;
 }
 .read {
-  background-color: var(--input);
+  background-color:rgba(203, 240, 240, 0.678);
 }
