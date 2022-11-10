@@ -40,18 +40,16 @@ export default {
         setNoteType(type) {
             console.log(`type:`, type)
             if (type === 'txt') {
-                this.note.type = type
                 this.placeholder = 'Enter text to remember'
             } else if (type === 'img') {
-                this.note.type = type
                 this.placeholder = 'Enter img url to remember'
             } else if (type === 'video') {
-                this.note.type = type
                 this.placeholder = 'Enter video url to remember'
             } else if (type === 'todos') {
-                this.note.type = type
                 this.placeholder = 'Enter comma separated list to remember'
             }
+            this.note.type = type
+            this.$refs.name.focus()
         },
         createNote() {
             var type = this.note.type

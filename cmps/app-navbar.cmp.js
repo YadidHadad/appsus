@@ -4,16 +4,16 @@ export default {
     template: `
         <div class="navbar">
             <nav class="flex row gap align-center justify-center">
-                <router-link to="/">
+                <router-link to="/" @click="setActiveApp('Home')">
                     <img src="/../assets/img/header/home.svg" alt="" />
                 </router-link>
-                <router-link to="/books">
+                <router-link to="/books" @click="setActiveApp('Books')">
                     <img src="/../assets/img/header/scholar.png" alt="" />
                 </router-link>
-                <router-link to="/email">
+                <router-link to="/email" @click="setActiveApp('Email')">
                     <img src="/../assets/img/header/gmail.png" alt="" />
                 </router-link>
-                <router-link to="/note">
+                <router-link to="/note" @click="setActiveApp('Notes')">
                     <img src="/../assets/img/header/keep.png" alt="" />
                 </router-link>
             </nav>
@@ -22,8 +22,20 @@ export default {
     components: {},
     created() { },
     data() {
-        return {}
+        return {
+            activeApp: 'Home'
+        }
     },
-    methods: {},
+    methods: {
+        setActiveApp(app) {
+            console.log(app)
+            this.activeApp = app
+            this.$emit('setApp', this.activeApp)
+
+        }
+
+
+
+    },
     computed: {},
 }

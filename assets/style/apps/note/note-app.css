@@ -153,15 +153,13 @@ textarea:focus, input:focus{
     .note-add{
         flex-direction: column;
         margin-inline: 2rem;
-        width: calc(100% - 4rem);
+        width: calc(100vw - 4rem);
         transform: none;
     }
     .btns-container{
         display: flex;
         justify-content: space-around;
     }
-
-    
 }
 
 @media  (max-width: 480px) {

@@ -1,4 +1,5 @@
 import { utilService } from '../../../services/util.service.js'
+import { noteService } from '../services/note.service.js'
 
 import noteImg from './note-img.cmp.js'
 import noteTodos from './note-todos.cmp.js'
@@ -15,26 +16,45 @@ export default {
         <h1>your pinned notes are here!</h1>
         <section class="note-list">
             <article v-for="note in notes"  :key="note.id" class="note-preview flex column justify-center align-center" :style="{ backgroundColor: 'todo.style' }" >
-                <div v-if="note.isPinned" class="pinned"><span class="fa pin-icon"></span></div>
-                <component :is="note.type" v-if="note.isPinned" :info="note.info"/>
+                <div v-if="note.isPinned" class="pinned" @click="togglePin(note)"><span class="fa pin-icon"></span></div>
+                <component :is="note.type" v-if="note.isPinned" :info="note.info" @click="editNote(note)"/>
             </article>
         </section>
         <h1>and some other stuff are kept here...</h1>
         <section class="note-list">
-                <article v-for="note in notes"  :key="note.id" class="note-preview fade flex justify-center align-center" :style="{ backgroundColor: 'todo.style' }" >
-                    <component :is="note.type" v-if="!note.isPinned" :info="note.info"/>
-                </article>
+            <article v-for="note in notes"  :key="note.id" class="note-preview fade flex justify-center align-center" :style="{ backgroundColor: 'todo.style' }" >
+                <div v-if="!note.isPinned" class="pinned" @click="togglePin(note)"><span class="fa unpin-icon"></span></div>
+                <component :is="note.type" v-if="!note.isPinned" :info="note.info"/>
+            </article>
         </section>
         `,
     created() {
     },
+
     data() {
         return {
+            noteToEditId: null,
         }
     },
-    methods: {
 
+    methods: {
+        togglePin(note) {
+            const noteToEdit = note
+            noteToEdit.isPinned = !noteToEdit.isPinned
+            noteService.save(noteToEdit)
+                .then(response => response)
+        },
+
+        editNote(note) {
+            console.log({ ...note })
+            this.noteToEditId = note.id
+            this.$route.params.id = this.noteToEditId.id
+            console.log(this.$route.params.id)
+            console.log(this.$route)
+
+        }
     },
+
     computed: {
 
     },
