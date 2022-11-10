@@ -22,10 +22,10 @@ function query(filterBy) {
     if (filterBy.isRead != 'all') {
       newEmails = newEmails.filter((email) => (filterBy.isRead ? email.isRead : !email.isRead))
     }
-    if (filterBy === 'inbox' || filterBy === 'sent' || filterBy === 'draft' || filterBy === 'trash') {
-      newEmails = newEmails.filter((email) => email)
+    if (filterBy.status) {
+      newEmails = newEmails.filter((email) => email.status === filterBy.status)
     }
-      return newEmails
+    return newEmails
   })
 }
 

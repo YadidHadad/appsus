@@ -1,3 +1,13 @@
 @import './email-list.css';
 @import './email-filter.css';
-@import './email-details.css'
+@import './email-details.css';
+@import './email-folder-list.css';
+
+.email-app{
+    display: flex;
+    
+}
+.email-list {
+   flex-grow: 1;
+    
+}
