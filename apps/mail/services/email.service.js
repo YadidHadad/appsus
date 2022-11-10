@@ -64,7 +64,7 @@ function getEmptyEmail(subject, body, to) {
     subject,
     body,
     isRead: null,
-    status:'sent',
+    status: 'sent',
     sendAt: Date.now(),
     from: { name: loggedinUser.fullname, emailAddress: loggedinUser.email },
     to,
@@ -99,3 +99,28 @@ function getPrevEmailId(emailId) {
 //     }
 //     return cars
 // }
+
+function onSetFilterBy(filterBy) {
+  filterBy = setBookFilter(filterBy)
+  _renderBooks()
+
+  const queryStringParams = `?minRate=${filterBy.minRate}&maxPrice=${filterBy.maxPrice}&txt=${filterBy.txt}`
+  const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + queryStringParams
+  window.history.pushState({ path: newUrl }, '', newUrl)
+}
+
+function _renderFilterByQueryStringParams() {
+  const queryStringParams = new URLSearchParams(window.location.search)
+  const filterBy = {
+    txt: queryStringParams.get('name') || '',
+    minRate: +queryStringParams.get('minRate') || 0,
+    maxPrice: +queryStringParams.get('maxPrice') || 100
+  }
+
+  if (!filterBy.txt && !filterBy.minRate && !filterBy.maxPrice) return
+
+  document.querySelector('.filter-txt').value = filterBy.txt
+  document.querySelector('.filter-rate-range').value = filterBy.minRate
+  document.querySelector('.filter-price-range').value = filterBy.maxPrice
+  setBookFilter(filterBy)
+} v

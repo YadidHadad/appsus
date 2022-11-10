@@ -31,6 +31,7 @@ function getRandomInt(min, max) {
 }
 
 
-const colors = ['#ff9aa2', '#ffb7b2', '#ffdac1', '#e2f0cb', '#b5ead7', '#f9a52c', '#afefef']
-const labels = ['critical', 'family', 'work', 'friends', 'spam', 'memories', 'romantic']
-const noteTypes = ['txt', 'img', 'video', 'todos']
+
+// const colors = ['#ff9aa2', '#ffb7b2', '#ffdac1', '#e2f0cb', '#b5ead7', '#f9a52c', '#afefef']
+// const labels = ['critical', 'family', 'work', 'friends', 'spam', 'memories', 'romantic']
+// const noteTypes = ['txt', 'img', 'video', 'todos']
