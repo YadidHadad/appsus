@@ -1,6 +1,6 @@
 export default {
   template: `
-<section class="email-filter">
+<section >
       <input @input="filter" v-model="filterBy.text" type="search" placeholder="Search mail" />
     <select @change="filter" v-model="filterBy.isRead">
       <option value="all">All</option>

@@ -1,15 +1,12 @@
-.note-app{
+/* .note-app{
     margin-block-start: 80px;
     overflow-y:auto;
     overflow-x: none;
     height: calc(100vh - 80px);
     background-color: var(--clr--1);
-}
-.note-app h1{
-font-size: 1.5rem;
-text-align: center;
-margin: 2rem;
-}
+} */
+
+
 
 .note-list{
     column-count: 5;
@@ -72,7 +69,7 @@ margin: 2rem;
 padding: 0.5rem;
 }
 
-.note-filter input{
+/* .note-filter input{
     z-index: 10;
     margin-inline-start: 250px ;
     width: calc(100% - 350px);
@@ -82,7 +79,7 @@ padding: 0.5rem;
     border-radius: 0.5rem;
     position: fixed;
     top: 1.3rem;
-}
+} */
 
 .note-add{
     color: var(--clr3);

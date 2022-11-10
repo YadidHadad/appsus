@@ -6,8 +6,8 @@ export default {
   name: 'email-app',
   props: [],
   template: `
-        <section class="email-section">
-            <email-filter @filter="filter"/>
+        <section class="app-container">
+            <email-filter @filter="filter" class="search-filter"/>
             <email-list @remove="removeEmail" v-if="emails" :emails="emails"/>
         </section>
         `,

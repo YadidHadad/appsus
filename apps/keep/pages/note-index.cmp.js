@@ -9,9 +9,9 @@ export default {
     name: 'note-index',
     props: [],
     template: `
-        <section class="note-app">
+        <section class="app-container">
             <!-- <h1>NOTE INDEX</h1> -->
-            <note-filter class="note-filter" @filterTitle="setFilterTitle"/>
+            <note-filter class="search-filter" @filterTitle="setFilterTitle"/>
             <!-- <div class="center> -->
                 <note-add class="center"></note-add>
                 <note-list 
@@ -44,16 +44,11 @@ export default {
             // debugger
             return noteService.query()
                 .then(notes => {
-                    // this.notes = notes
                     console.log(`notes:`, notes)
-                    const regex = new RegExp(this.filterBy.title, 'i')
-                    notes = notes.filter(note => {
-                        var test = regex.test(note.info.title)
-                        console.log(`test:`, test)
-                        return test
-                    }
-                        // && note.info.label.some(label => this.filterBy.label.includes(label))
-                    )
+                    var filter = { ...this.filterBy.title }
+                    console.log(`filter:`, filter.title)
+                    const regex = new RegExp(filter.title, 'i')
+                    notes = notes.filter(note => regex.test(note.info.title) && note.info.label.some(label => this.filterBy.label.includes(label)))
                     this.notes = notes
                     return notes
                 })

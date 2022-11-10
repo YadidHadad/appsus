@@ -1,0 +1,11 @@
+.search-filter input{
+    z-index: 10;
+    margin-inline-start: 250px ;
+    width: calc(100% - 350px);
+    max-width: 680px;
+    background-color: var(--clr--2);
+    border: none;
+    border-radius: 0.5rem;
+    position: fixed;
+    top: 1.3rem;
+}
