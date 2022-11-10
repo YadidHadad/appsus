@@ -7,10 +7,10 @@ export default {
   name: 'email-app',
   props: [],
   template: `
-        <section class="app-container">
+        <section class="app-container email-app">
             <email-filter @filter="filter" class="search-filter filter"/>
-            <email-folder-list class="email-folder-list"/>
-            <email-list @remove="removeEmail" v-if="emails" :emails="emails"/>
+            <email-folder-list @filterByStatus="filterStatus" class="email-folder-list"/>
+            <email-list  @remove="removeEmail" v-if="emails" :emails="emails"/>
         </section>
         `,
 
@@ -20,6 +20,7 @@ export default {
       filterBy: {
         text: '',
         isRead: 'all',
+        status: null,
       },
     }
   },
@@ -35,7 +36,13 @@ export default {
     filter(filterBy) {
       console.log(filterBy)
       this.filterBy = filterBy
-      this.emailsToShow(this.filterBy)
+      this.emailsToShow({ ...this.filterBy })
+    },
+
+    filterStatus(filterBy) {
+      console.log(filterBy)
+      this.filterBy.status = filterBy
+      this.emailsToShow({ ...this.filterBy })
     },
     removeEmail(emailId) {
       emailService.remove(emailId).then(() => {

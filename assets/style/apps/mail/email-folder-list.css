@@ -1,0 +1,18 @@
+.email-folder-list{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+}
+
+.email-folder-list ul li{
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.email-folder-list ul{
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
