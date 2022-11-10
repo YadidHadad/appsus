@@ -6,6 +6,7 @@ import noteTodos from '../cmps/note-todos.cmp.js'
 import noteTxt from '../cmps/note-txt.cmp.js'
 import noteVideo from '../cmps/note-video.cmp.js'
 
+
 export default {
     name: '',
     props: ['note'],
@@ -15,6 +16,9 @@ export default {
                 <div @click="closeNote">close</div>
                 <div>color</div>
                 <div @click="removeNote">remove</div>
+                <!-- /:subject?/:body? -->
+                <router-link  :to="'/email/' + email.subject + '/'+ email.body + ''"> <email-preview :email="email"/>dgggs</router-link>
+
                 <div>send as email</div>
             </div>
             <section v-if="note.type === 'note-img'">
@@ -42,9 +46,24 @@ export default {
         `,
     created() {
 
+
+
+
+
+    },
+    unmounted() {
+        console.log(this.$route)
+
     },
     data() {
         return {
+
+            email: {
+                subject: this.note.info.title,
+                body: this.note.info.url || this.note.info.txt
+
+            }
+
         }
     },
     methods: {

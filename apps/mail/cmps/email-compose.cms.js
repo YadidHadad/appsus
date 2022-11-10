@@ -1,5 +1,6 @@
 export default {
-    name:'email-compose',
+  name: 'email-compose',
+  props: ['urlInfo'],
   template: `
     <form @submit.prevent="sendMail">
         <button @click="close">X</button>
@@ -18,12 +19,15 @@ export default {
       },
     }
   },
+  created() {
+    console.log(this.urlInfo)
+  },
   methods: {
     sendMail() {
       this.$emit('sendMail', { ...this.newMail })
     },
-    close(){
-        this.$emit('close')
+    close() {
+      this.$emit('close')
     }
   },
 }
