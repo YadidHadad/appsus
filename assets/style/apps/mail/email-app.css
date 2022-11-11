@@ -7,6 +7,6 @@
 .email-app{
     display: flex;   
 }
-.email-list {
+/* .email-list {
    flex-grow: 1; 
-}
+} */

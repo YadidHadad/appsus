@@ -3,7 +3,8 @@
     overflow-y:auto;
     overflow-x: none;
     height: calc(100vh - 80px);
-    background-color: var(--clr--1);
+    /* background-color: white; */
+
 }
 
 .app-container h1{

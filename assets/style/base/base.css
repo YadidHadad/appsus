@@ -10,7 +10,7 @@ body {
   min-width: 320px;
   margin: 0;
   color: var(--clr4);
-  background-color: var(--background);
+  background-color: var(--bgc);
   height: 100vh;
   /* padding-block-start: 1.2rem; */
   font-family: 'OpenSans-Regular';
@@ -56,8 +56,8 @@ object {
 /* tap targets: */
 nav a,
 button {
-  min-width: 48px;
-  min-height: 48px;
+  /* min-width: 48px;
+  min-height: 48px; */
 }
 
 /* Simple and useful CSS Debugging Technique */

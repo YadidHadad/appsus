@@ -110,6 +110,41 @@
     content: "\f00d";
     font-size: 1rem;
 }
+.fa.pen-icon::before {
+    content: "\f304";
+    font-size: 1rem;
+    padding-inline-end: 1rem;
+}
+.fa.inbox-icon::before {
+    content: "\f01c";
+    font-size: 1rem;
+    padding-inline-end: 1rem;
+}
+.fa.sent-icon::before {
+    content: "\f1d8";
+    font-size: 1rem;
+    padding-inline-end: 1rem;
+}
+.fa.trash-icon::before {
+    content: "\f1f8";
+    font-size: 1rem;
+    padding-inline-end: 1rem;
+}
+.fa.draft-icon::before {
+    content: "\f5ae";
+    font-size: 1rem;
+    padding-inline-end: 1rem;
+}
+.fa.square-icon::before {
+    content: "\e269";
+    font-size: 1rem;
+    padding-inline-end: 1rem;
+}
+
+
+
+
+
 /* center */
 
 .center{

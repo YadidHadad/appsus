@@ -5,7 +5,7 @@ export default {
   emits: ['remove'],
   props: ['emails'],
   template: `
-        <section class="email-list flex  justify-center">
+        <section class="email-list" v-if="!this.$route.params.id">
           <ul v-if="isListShow" class="flex flex-column clean-list">
             <li v-for="email in emails" :key="email.id">
               <button class="remove-btn fa" @click="remove(email.id)"></button>
@@ -14,7 +14,7 @@ export default {
           </ul>
         </section>
         <section>
-        <router-view @closeEmail="openEmail"></router-view>
+          <router-view @closeEmail="openEmail"></router-view>
         </section>
         `,
   data() {

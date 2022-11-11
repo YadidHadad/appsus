@@ -1,12 +1,7 @@
 .app-header {
-  /* background-color: var(--clr5); */
-  /* color: var(--secondary-clr1); */
-  /* margin-block-end: 1em; */
   padding: 1em;
   position: fixed;
   width: 100%;
-  top: 0;
-  left: 0;
 }
 
 .logo{
@@ -18,25 +13,16 @@
 
 .logo h1{
   font-size: 2rem;
-
 }
 
 .navbar-icon{
-
   position: fixed;
   top: 1.3rem;
   right: 2rem;
-cursor: pointer;
+  cursor: pointer;
 }
-
 
 .logo img{
   height: 3rem;
   margin-inline-end: 1rem;
-}
-
-@media(max-width: 720px) {
-  .app-header {
-    /* color: var(--secondary-clr2); */
-  }
 }

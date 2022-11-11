@@ -3,10 +3,10 @@ export default {
   name: 'email-details',
   template: `
   
-  <section class="email-details" v-if="email">
-  <router-link @click="closeEmail" to="/email">←</router-link>
-  <h1>{{email.subject}}</h1>
-  <p>{{email.body}}</p>
+  <section class="email-details grow" v-if="email"> 
+    <router-link @click="closeEmail" to="/email">←</router-link>
+    <h1>{{email.subject}}</h1>
+    <p>{{email.body}}</p>
   </section>
         `,
 

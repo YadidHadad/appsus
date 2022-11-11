@@ -1,11 +1,21 @@
 .email-details{
-display: flex;
-flex-direction: column;
-border: 1px solid gainsboro;
-gap: 3rem;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
+  height: 100%;
+  width: calc(100vw - 184px);
+  padding-inline-end: 2rem;
+  border-radius: 1rem 0 0 0;
+  padding-block-start: 3.5rem;
+  background-color: white;
+
+  flex-grow: 1;
+  padding: 5rem;
+
+
+
+}
+
+.email-details  *{
+  font-size: 1rem !important;
+  text-align: left !important;
+  margin: 0 !important;
 
 }
