@@ -52,17 +52,19 @@ export default {
 
             email: {
                 subject: this.note.info.title,
-                body: this.note.info.url || this.note.info.txt
+                body: this.note.info.url || this.note.info.txt || 'What on your mind?'
             }
 
         }
     },
     methods: {
         removeNote() {
-            this.$emit('noteToRemove', { ...this.note.id })
             console.log(this.note)
             noteService.remove(this.note.id)
-                .then(() => this.closeNote())
+                .then(() => {
+                    this.$emit('noteToRemove', { ...this.note.id })
+                    this.closeNote()
+                })
         },
 
         closeNote() {

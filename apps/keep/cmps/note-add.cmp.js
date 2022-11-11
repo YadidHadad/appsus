@@ -4,22 +4,26 @@ export default {
     name: 'note-add',
     props: ['urlInfo'],
     template: `
-        <form class="note-add flex "  @submit.prevent="createNote">
-            <input type="text" :placeholder="placeholder" v-model="note.value"  ref="name" />
-            <div class="flex row align-center btns-container">
-                <div :class="{selectedNoteType : note.type==='txt' }">
-                    <span @click="setNoteType('txt')" class="fa text-icon add-btn"></span>
-                </div>                    
-                <div :class="{selectedNoteType : note.type==='img' }">
-                    <span @click="setNoteType('img')" class="fa img-icon add-btn" ></span>
-                </div>
-                <div :class="{selectedNoteType : note.type==='video' }">
-                    <span @click="setNoteType('video')" class="fa video-icon add-btn" ></span>
-                </div>
-                <div :class="{selectedNoteType : note.type==='todos' }">
-                    <span @click="setNoteType('todos')" class="fa list-icon add-btn" ></span>
+        <form class="note-add flex column "  @submit.prevent="createNote">
+            <div class="flex row grow">
+                <input type="text" placeholder="Enter note title" v-model="note.value"  ref="name" />
+                <div class="flex row align-center btns-container ">
+                    <div :class="{selectedNoteType : note.type==='txt' }">
+                        <span @click="setNoteType('txt')" class="fa text-icon add-btn"></span>
+                    </div>                    
+                    <div :class="{selectedNoteType : note.type==='img' }">
+                        <span @click="setNoteType('img')" class="fa img-icon add-btn" ></span>
+                    </div>
+                    <div :class="{selectedNoteType : note.type==='video' }">
+                        <span @click="setNoteType('video')" class="fa video-icon add-btn" ></span>
+                    </div>
+                    <div :class="{selectedNoteType : note.type==='todos' }">
+                        <span @click="setNoteType('todos')" class="fa list-icon add-btn" ></span>
+                    </div>
                 </div>
             </div>
+            <textarea id="w3review" name="w3review" rows="4"  :placeholder="placeholder"></textarea>
+            <div>control buttons</div>
         </form>
         `,
     components: {},

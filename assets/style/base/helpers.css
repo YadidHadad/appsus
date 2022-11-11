@@ -32,6 +32,10 @@
     flex-wrap: wrap;
 }
 
+.grow {
+  flex-grow: 1;
+}
+
 /* text helpers */
 
 .colored-text {
