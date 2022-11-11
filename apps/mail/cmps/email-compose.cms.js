@@ -8,7 +8,7 @@ export default {
       <input v-model="newMail.subject" type="text" placeholder="Subject" />
       <textarea v-model="newMail.body" name="comment" placeholder="Body" >Enter text here...</textarea>
       <button>Send</button>
-      <router-link v-if="newMail.subject.length > 0" :to="'/note/'+ '000/' + newMail.subject +''">Keep as Note</router-link>
+      <router-link v-if="newMail.subject" :to="'/note/'+ '000/' + newMail.subject +''">Keep as Note</router-link>
 
       </form>
     `,

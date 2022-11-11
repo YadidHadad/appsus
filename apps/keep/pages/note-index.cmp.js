@@ -80,8 +80,7 @@ export default {
         },
         removeNote(noteId) {
             const idx = this.notes.findIndex(note => note.id === noteId)
-            this.notes = this.notes.splice(idx, 1)
-            this.notesToShow()
+            this.notes.splice(idx, 1)
         }
     },
 

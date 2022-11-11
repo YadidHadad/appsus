@@ -70,10 +70,13 @@
     border: 1px solid var(--clr4);
 }
 
+.note-add textarea,
 .note-add input{
     flex-grow: 1;
     border: none;
     border-radius: 0.5rem;
+    padding: 1em;
+    font-family: OpenSans-Regular;
 }
 
 .add-btn{
@@ -85,7 +88,8 @@
     color: var(--clr5);
 }
 
-textarea:focus, input:focus{
+textarea:focus, 
+input:focus{
     outline: none;
 }
 
