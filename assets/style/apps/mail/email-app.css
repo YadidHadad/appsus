@@ -5,10 +5,8 @@
 @import './email-compose.css';
 
 .email-app{
-    display: flex;
-    
+    display: flex;   
 }
 .email-list {
-   flex-grow: 1;
-    
+   flex-grow: 1; 
 }

@@ -10,7 +10,7 @@ export default {
   template: `
         <section class="app-container email-app">
             <email-compose v-if="isComposeOpen" @sendMail="composeEmail" @close="openEmailCompose" class="email-compose" :urlInfo="urlInfo"/>
-            <email-filter @filter="filter" class="search-filter filter"/>
+            <email-filter @filter="filter" class="search-filter"/>
             <email-folder-list @filterByStatus="filterStatus" @composeEmail="openEmailCompose" class="email-folder-list"/>
             <email-list @remove="removeEmail" v-if="emails" :emails="emails"/>
         </section>

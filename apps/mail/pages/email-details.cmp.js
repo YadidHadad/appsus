@@ -4,7 +4,7 @@ export default {
   template: `
   
   <section class="email-details" v-if="email">
-  <router-link to="/email">←</router-link>
+  <router-link @click="closeEmail" to="/email">←</router-link>
   <h1>{{email.subject}}</h1>
   <p>{{email.body}}</p>
   </section>
@@ -17,6 +17,12 @@ export default {
   },
   created() {
     emailService.get(this.emailId).then((email) => (this.email = email))
+  },
+
+  methods: {
+    closeEmail() {
+      this.$emit('closeEmail')
+    },
   },
 
   computed: {

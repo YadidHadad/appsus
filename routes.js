@@ -9,38 +9,39 @@ import noteDetails from './apps/keep/pages/note-details.cmp.js'
 const { createRouter, createWebHashHistory } = VueRouter
 
 const routerOptions = {
-	history: createWebHashHistory(),
-	routes: [
-		{
-			path: '/',
-			component: homePage,
-		},
-		{
-			path: '/books',
-			component: aboutPage,
-		},
-		{
-			path: '/email',
-			component: emailIndex,
-		},
-		{
-			path: '/email/:subject?/:body?',
-			component: emailIndex,
-		},
-		{
-			path: '/email/:id',
-			component: emailDetails,
-		},
-		{
-			path: '/note',
-			component: noteIndex,
-		},
-		{
-			path: '/note/:id/:value?',
-			component: noteIndex,
-		},
+  history: createWebHashHistory(),
+  routes: [
+    {
+      path: '/',
+      component: homePage,
+    },
+    {
+      path: '/books',
+      component: aboutPage,
+    },
+    {
+      path: '/email',
+      component: emailIndex,
 
-	],
+      children: [{ path: '/email/:id', component: emailDetails }],
+    },
+    {
+      path: '/email/:subject?/:body?',
+      component: emailIndex,
+    },
+    // {
+    //   path: '/email/:id',
+    //   component: emailDetails,
+    // },
+    {
+      path: '/note',
+      component: noteIndex,
+    },
+    {
+      path: '/note/:id/:value?',
+      component: noteIndex,
+    },
+  ],
 }
 
 export const router = createRouter(routerOptions)
