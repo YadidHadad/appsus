@@ -5,8 +5,18 @@
 @import './email-compose.css';
 
 .email-app{
-    display: flex;   
+    display: flex;
+    /* margin-top: 50px;    */
 }
-/* .email-list {
-   flex-grow: 1; 
-} */
+
+.open-mobile-menu{
+      position: absolute;
+      background-color: unset;
+      border-radius: 30px;
+      display: none;  
+}
+
+.open-mobile-menu:hover{
+    padding-inline-start: 1rem;
+    transition: all 0.5s;
+}

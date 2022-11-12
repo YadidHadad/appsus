@@ -6,20 +6,21 @@ import emailCompose from '../cmps/email-compose.cms.js'
 
 export default {
   name: 'email-app',
-  props: [],
   template: `
-        <section class="app-container email-app">
-            <email-filter @filter="filter" class="search-filter"/>
-            <email-folder-list @filterByStatus="filterStatus" @composeEmail="openEmailCompose" class="email-folder-list"/>
-            <email-compose v-if="isComposeOpen" @sendMail="composeEmail" @close="openEmailCompose" class="email-compose" :urlInfo="urlInfo"/>
-            <email-list @remove="removeEmail" v-if="emails" :emails="emails"/>
+          <div class="on-mobile-menu-open" :class="show" @click="toggleMobileMenu"></div>
+          <button class="fa arrow-icon open-mobile-menu" @click="toggleMobileMenu"></button>
+          <section class="app-container email-app">
+            <email-filter class="search-filter" @filter="filter" />
+            <email-folder-list class="email-folder-list" :class="show" @filterByStatus="filterStatus" @composeEmail="openEmailCompose" :emails="emails"/>
+            <email-compose class="email-compose" v-if="isComposeOpen" @sendMail="composeEmail" @close="openEmailCompose"  :urlInfo="urlInfo"/>
+            <email-list v-if="emails" @remove="removeEmail" @read="readenEmail" :emails="emails"/>
         </section>
         `,
 
   data() {
     return {
       emails: null,
-
+      isMenuOpen: false,
       filterBy: {
         text: '',
         isRead: 'all',
@@ -29,8 +30,7 @@ export default {
       urlInfo: {
         subject: this.$route.params.subject,
         body: this.$route.params.body,
-
-      }
+      },
     }
   },
 
@@ -41,7 +41,6 @@ export default {
     })
 
     console.log(this.$route)
-
 
     if (this.$route.params.subject || this.$route.params.body) {
       console.log(this.$route.params.subject, this.$route.params.body)
@@ -55,12 +54,23 @@ export default {
       this.filterBy = filterBy
       this.emailsToShow({ ...this.filterBy })
     },
-
     filterStatus(filterBy) {
       console.log(filterBy)
       this.filterBy.status = filterBy
       this.emailsToShow({ ...this.filterBy })
     },
+
+    readenEmail(emailId) {
+      const idx = this.emails.findIndex((email) => email.id === emailId)
+      if (this.emails[idx].isRead === true) return
+      console.log(this.emails[idx].isRead)
+      this.emails[idx].isRead = true
+      emailService.get(emailId).then((email) => {
+        email.isRead = true
+        emailService.save(email)
+      })
+    },
+
     removeEmail(emailId) {
       emailService.remove(emailId).then(() => {
         const idx = this.emails.findIndex((email) => email.id === emailId)
@@ -76,6 +86,7 @@ export default {
     sendToNote(email) {
       emailService.sendEmailToNote(email)
     },
+
     composeEmail(email) {
       const { subject, to, body } = email
       const newEmail = emailService.getEmptyEmail(subject, body, to)
@@ -84,6 +95,16 @@ export default {
     },
     openEmailCompose() {
       this.isComposeOpen = !this.isComposeOpen
+    },
+    toggleMobileMenu() {
+      this.isMenuOpen = !this.isMenuOpen
+      console.log('hi')
+    },
+  },
+
+  computed: {
+    show() {
+      return { show: this.isMenuOpen }
     },
   },
 

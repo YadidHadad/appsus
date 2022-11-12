@@ -18,8 +18,9 @@ export default {
     },
 
     getShortSubject() {
-      if (this.email.subject.length > 39) this.email.subject += '...'
-      return this.email.subject.substring(0, 40)
+      console.log(this.email.subject.length)
+      if (this.email.subject.length > 40) return this.email.subject.substring(0, 40) + '...'
+      return this.email.subject
     },
   },
 }

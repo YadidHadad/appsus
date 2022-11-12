@@ -33,10 +33,6 @@ const routerOptions = {
       path: '/email/:subject?/:body?',
       component: emailIndex,
     },
-    // {
-    //   path: '/email/:id',
-    //   component: emailDetails,
-    // },
     {
       path: '/note',
       component: noteIndex,

@@ -3,13 +3,14 @@ export default {
   props: ['urlInfo'],
   template: `
     <form @submit.prevent="sendMail">
-      <h3>New Message <button @click="close">X</button></h3>
-      <input v-model="newMail.emailAddress" type="email" placeholder="Email to"/>
+      <h4>New Message <button @click="close"  title="Close">&#215;</button></h4>
+      <input v-model="newMail.emailAddress" ref="to" type="email" placeholder="To"/>
       <input v-model="newMail.subject" type="text" placeholder="Subject" />
-      <textarea v-model="newMail.body" name="comment" placeholder="Body" >Enter text here...</textarea>
-      <button>Send</button>
-      <router-link v-if="newMail.subject" :to="'/note/'+ '000/' + newMail.subject +''">Keep as Note</router-link>
-
+      <textarea v-model="newMail.body" name="comment" ></textarea>
+      <section class="btns">
+      <button class="send-btn" title="Send email">Send</button>
+      <router-link class="save-email-to-note"  :to="'/note/'+ '0/' + newMail.subject + newMail.body + ''">Keep as Note</router-link>
+      </section>
       </form>
     `,
 
@@ -38,5 +39,9 @@ export default {
       this.$emit('close')
     },
 
+  },
+
+  mounted() {
+    this.$refs.to.focus()
   },
 }

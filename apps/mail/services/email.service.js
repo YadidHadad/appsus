@@ -40,7 +40,11 @@ function remove(emailId) {
 }
 
 function save(email) {
-  return storageService.post(EMAILS_KEY, email)
+  if (email.id) {
+    return storageService.put(EMAILS_KEY, email)
+  } else {
+    return storageService.post(EMAILS_KEY, email)
+  }
 }
 
 function _createEmails() {
@@ -60,7 +64,7 @@ function _createEmail(subject, body, to) {
 
 function getEmptyEmail(subject, body, to) {
   return {
-    id: utilService.makeId(),
+    id: '',
     subject,
     body,
     isRead: null,
