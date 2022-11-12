@@ -9,12 +9,12 @@ export default {
           <ul v-if="isListShow" class="flex flex-column clean-list">
             <li v-for="email in emails" :key="email.id">
               <button class="remove-btn fa" @click="remove(email.id)"></button>
-              <router-link @click="openEmail(email.id)" :to="'/email/' + email.id"> <email-preview :email="email"/></router-link>
+              <router-link  @click="openEmail(email.id)" :to="'/email/' + email.id"> <email-preview :email="email"/></router-link>
             </li>
           </ul>
         </section>
         <section>
-          <router-view @closeEmail="closeEmail"></router-view>
+          <router-view  @removeEmail="remove" @closeEmail="closeEmail"></router-view>
         </section>
         `,
   data() {
