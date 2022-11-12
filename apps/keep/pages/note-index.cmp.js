@@ -45,7 +45,8 @@ export default {
             },
             notes: null,
             urlInfo: {
-                title: ''
+                title: '',
+                txt: '',
             },
         }
     },
@@ -59,9 +60,15 @@ export default {
             })
             .catch(() => showErrorMsg('Error occurred while loading notes from storage!'))
 
-        this.urlInfo.value = this.$route.params.title
-    },
+        this.urlInfo.title = this.$route.params.title
+        this.urlInfo.txt = this.$route.params.txt
+        console.log({ ...this.urlInfo })
 
+    },
+    mounted() {
+
+
+    },
     methods: {
         setFilterTitle(value) {
             this.filterBy.title = value.title

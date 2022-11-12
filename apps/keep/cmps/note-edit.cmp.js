@@ -31,7 +31,7 @@ export default {
                 </div>
             </div>
             <router-link  :to="'/email/' + email.subject + '/'+ email.body + ''"><div class="fa sent-icon"></div></router-link>
-            <div class="fa duplicate-icon" @click.stop="duplicateNote"></div>
+            <div v-if="this.note.id" class="fa duplicate-icon" @click.stop="duplicateNote"></div>
             <div class="fa pin-icon" @click.stop="togglePin"></div>
         </section>
  
@@ -138,7 +138,7 @@ export default {
         duplicateNote() {
             let noteCopy = Object.assign({}, { ...this.note });
             noteCopy.id = null
-          
+
             noteService.save(noteCopy)
                 .then(noteCopy => {
                     showSuccessMsg('note was copied successfully!')

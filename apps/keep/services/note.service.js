@@ -93,13 +93,13 @@ function createNote(note) {
 function _getNoteData(note) {
   console.log(`note:`, note)
 
-  const { type } = note
+  const { type, isPinned } = note
   const { title, value, label } = note.info
   const { backgroundColor } = note.info.style
 
   const newNote = {
     type,
-    isPinned: false,
+    isPinned,
     info: {
       title,
       label,
