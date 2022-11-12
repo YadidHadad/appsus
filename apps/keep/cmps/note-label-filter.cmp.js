@@ -57,14 +57,10 @@ export default {
     },
     methods: {
         toggleLabelFilter(label) {
-            console.log(`label:`, label)
-
             if (this.chosenLabels.includes(label)) {
                 this.activeLabels[label] = false
                 const labelIdx = this.chosenLabels.findIndex(label => label === label)
-                console.log(`labelIdx:`, labelIdx)
                 this.chosenLabels.splice(labelIdx, 1)
-                console.log([...this.chosenLabels])
                 this.$emit('labelFilter', [...this.chosenLabels])
             } else {
                 this.activeLabels[label] = true
@@ -73,7 +69,6 @@ export default {
             }
         },
         toggleLabelFilterMobile() {
-            console.log(this.showLabelFilterMobile)
             if (!this.showLabelFilterMobile) {
                 this.showLabelFilterMobile = !this.showLabelFilterMobile
             } else {
@@ -95,8 +90,5 @@ export default {
             }
 
         }
-
-
-
     },
 }

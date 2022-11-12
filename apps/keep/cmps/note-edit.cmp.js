@@ -63,8 +63,6 @@ export default {
     methods: {
         removeNote() {
             var note = { ...this.note }
-            console.log('remove note')
-            console.log(note)
             noteService.remove(note.id)
                 .then(() => {
                     this.$emit('removeNote', this.note.id)
@@ -78,7 +76,6 @@ export default {
         changeBGC(note, color) {
             this.note.info.style.backgroundColor = color
             var note = { ...this.note }
-            console.log(note)
             noteService.save(note)
                 .then(() => { })
         },
@@ -92,7 +89,6 @@ export default {
         },
 
         togglePin(note) {
-            console.log('toggle pin')
             this.note.isPinned = !this.note.isPinned
             var note = { ...this.note }
             noteService.save(note)

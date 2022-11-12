@@ -47,7 +47,6 @@ export default {
     },
 
     unmounted() {
-        console.log(this.$route)
     },
 
     data() {

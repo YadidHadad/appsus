@@ -40,8 +40,6 @@ export default {
     },
 
     created() {
-        console.log(this.urlInfo)
-
         if (this.urlInfo.value) {
 
             if (this.urlInfo.value !== '') {
