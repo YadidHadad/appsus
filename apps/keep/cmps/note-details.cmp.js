@@ -1,5 +1,7 @@
 import { utilService } from '../../../services/util.service.js'
 import { noteService } from '../services/note.service.js'
+import { showSuccessMsg } from '../../../services/event-bus.service.js'
+import { showErrorMsg } from '../../../services/event-bus.service.js'
 
 export default {
     name: '',

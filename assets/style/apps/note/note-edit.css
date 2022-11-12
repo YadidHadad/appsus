@@ -37,3 +37,10 @@
 .show-label-picker:hover .label-picker {
     opacity:1;
 }
+
+.color-pick:hover{
+    outline: 3px solid black;
+    z-index: 50;
+
+
+}

@@ -1,4 +1,6 @@
 import { noteService } from "../services/note.service.js"
+import { showSuccessMsg } from '../../../services/event-bus.service.js'
+import { showErrorMsg } from '../../../services/event-bus.service.js'
 
 import labelPicker from "../../../cmps/label-picker.cmp.js"
 
@@ -6,7 +8,7 @@ export default {
     name: 'note edit',
 
     props: ['note'],
-    emits: ['removeNote', 'setNewNoteBGC', 'setNewNoteLabel', 'setNewNotePin'],
+    emits: ['removeNote', 'setNewNoteBGC', 'setNewNoteLabel', 'setNewNotePin', 'duplicateNote'],
 
     template: `
         <section class="note-edit">
@@ -29,6 +31,7 @@ export default {
                 </div>
             </div>
             <router-link  :to="'/email/' + email.subject + '/'+ email.body + ''"><div class="fa sent-icon"></div></router-link>
+            <div class="fa duplicate-icon" @click.stop="duplicateNote"></div>
             <div class="fa pin-icon" @click.stop="togglePin"></div>
         </section>
  
@@ -133,14 +136,19 @@ export default {
                 .catch(() => showErrorMsg('Error occurred while saving note to storage!'))
 
         },
-        setNewTitle() {
-            console.log('new title')
-        },
-        setNewTxt() {
-            console.log('new txt')
-        },
-        setNewURL() {
-            console.log('new url')
+        duplicateNote() {
+            console.log(this.note)
+            let noteCopy = Object.assign({}, { ...this.note });
+            noteCopy.id = null
+            console.log(noteCopy)
+            noteService.save(noteCopy)
+                .then(noteCopy => {
+                    console.log(noteCopy)
+                    showSuccessMsg('note was copied successfully!')
+                    this.$emit('duplicateNote', noteCopy)
+                })
+                .catch(() => showErrorMsg('Error occurred while saving note to storage!'))
+
         }
 
     },

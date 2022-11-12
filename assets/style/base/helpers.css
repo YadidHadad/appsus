@@ -205,6 +205,11 @@
     font-size: 1rem;
     padding-inline-end: 1rem;
 }
+.fa.duplicate-icon::before {
+    content: "\f24d";
+    font-size: 1rem;
+    padding-inline-end: 1rem;
+}
 .fa.user-circel-icon::before {
     content: "\f2bd";
     font-size: 2.5rem;
