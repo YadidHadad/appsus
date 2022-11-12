@@ -1,0 +1,17 @@
+.note-details{
+    background-color: blue;
+    height: 500px;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+
+    z-index: 50 ;
+    height: fit-content;
+    padding: 1rem;
+    border-radius: 0.5rem;
+
+    box-shadow: 1px 1px 5px 0px var(--clr3);
+    border: 1px solid var(--clr2);
+
+}
