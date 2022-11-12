@@ -27,7 +27,6 @@ export default {
             this.$emit('filterTitle', { ...this.filterBy })
         },
         setNoteType(type) {
-            console.log(`type:`, type)
             this.filterBy.type = type
             this.filter()
         }

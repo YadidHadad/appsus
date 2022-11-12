@@ -50,11 +50,7 @@ export default {
         `,
 
     created() {
-        console.log({ ...this.notes })
         this.setNoteToEdit()
-        console.log(this.noteId)
-        console.log(this.noteIdx)
-        console.log({ ...this.note })
     },
 
     unmounted() {
@@ -70,7 +66,6 @@ export default {
 
     methods: {
         removeNote() {
-            console.log(this.note)
             noteService.remove(this.note.id)
                 .then(() => {
                     this.$emit('noteToRemove', { ...this.note.id })
@@ -82,7 +77,6 @@ export default {
 
         setNoteToEdit() {
             if (!this.notes) return
-            console.log(this.notes)
             this.noteId = this.$route.params.id
             this.noteIdx = this.notes.findIndex(note => {
                 const noteToCheck = { ...note }
@@ -119,8 +113,7 @@ export default {
     watch: {
         noteOpen() {
             this.setNoteToEdit()
-            console.log('id changed')
-            console.log(this.$route.params.id)
+
 
             if (this.noteOpen === undefined) {
                 this.noteId = null

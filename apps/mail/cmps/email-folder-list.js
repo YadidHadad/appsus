@@ -2,7 +2,7 @@ export default {
   props: ['emails'],
   template: `
     <section class="email-folder-list flex gap">
-        <button @click="composeEmail"><span class="fa pen-icon"></span>Compose</button>
+        <button @click="composeEmail"><span class="fa pen-icon"></span><span>Compose</span></button>
         <ul class="clean-list gap">
           <li @click="setFilterByStatus('inbox')"><span class="fa inbox-icon"></span>Inbox</li>
           <li @click="setFilterByStatus('sent')"><span class="fa sent-icon"></span>Sent</li>

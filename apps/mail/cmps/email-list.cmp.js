@@ -6,7 +6,7 @@ export default {
   props: ['emails'],
   template: `
         <section class="email-list" v-if="!this.$route.params.id">
-          <ul v-if="isListShow" class="flex flex-column clean-list">
+          <ul class="flex flex-column clean-list">
             <li v-for="email in emails" :key="email.id">
               <button class="remove-btn fa" @click="remove(email.id)"></button>
               <router-link  @click="openEmail(email.id)" :to="'/email/' + email.id"> <email-preview :email="email"/></router-link>
@@ -21,6 +21,10 @@ export default {
     return {
       isListShow: true,
     }
+  },
+  created() {
+    this.isListShow = true
+    console.log(this.isListShow);
   },
 
   methods: {

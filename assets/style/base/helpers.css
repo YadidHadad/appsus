@@ -112,7 +112,7 @@
 }
 .fa.pen-icon::before {
   content: '\f304';
-  font-size: 1rem;
+  font-size: 1.5rem;
   padding-inline-end: 1rem;
 }
 .fa.inbox-icon::before {
@@ -142,7 +142,7 @@
 }
 .fa.arrow-icon::before {
   content: '\f061';
-  font-size: 1rem;
+  font-size: 2rem;
   padding: 0.5rem;
 }
 .fa.left-arrrow-icon::before {

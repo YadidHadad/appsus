@@ -23,10 +23,6 @@ function query(filterBy) {
   var type = filter.type
   var labels = [...filterBy.label]
 
-  console.log('filter', filter)
-  console.log('filter', title)
-  console.log('filter', type)
-  console.log('filter', labels)
 
   return storageService.query(NOTES_KEY)
     .then(notes => {
@@ -40,7 +36,6 @@ function query(filterBy) {
         return note.type === type
       })
       if (labels.length > 0) newNotes = newNotes.filter(note => note.info.label.some(label => labels.includes(label)))
-      console.log(newNotes)
       return newNotes
     })
 }

@@ -55,7 +55,6 @@ function _createEmails() {
   if (!emails || !emails.length) {
     emails = emailsData
     utilService.saveToStorage(EMAILS_KEY, emails)
-    console.log(emails)
   }
 }
 

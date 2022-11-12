@@ -35,6 +35,10 @@
 .email-details a {
   font-weight: bold !important;
 }
+.email-details .email-details-btns{
+  display: flex;
+  justify-content: space-between;
+}
 .email-details .back-list {
   align-self: flex-end;
 }

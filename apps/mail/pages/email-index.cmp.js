@@ -46,12 +46,12 @@ export default {
 
   methods: {
     filter(filterBy) {
-      console.log(filterBy)
+
       this.filterBy = filterBy
       this.emailsToShow({ ...this.filterBy })
     },
     filterStatus(filterBy) {
-      console.log(filterBy)
+
       this.filterBy.status = filterBy
       this.emailsToShow({ ...this.filterBy })
     },
@@ -59,7 +59,6 @@ export default {
     readenEmail(emailId) {
       const idx = this.emails.findIndex((email) => email.id === emailId)
       if (this.emails[idx].isRead === true) return
-      console.log(this.emails[idx].isRead)
       this.emails[idx].isRead = true
       emailService.get(emailId).then((email) => {
         email.isRead = true

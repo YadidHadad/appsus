@@ -87,7 +87,6 @@ export default {
         },
 
         editNote(note) {
-            console.log('edit note')
             if (!this.note.id) return
         },
 
@@ -137,13 +136,11 @@ export default {
 
         },
         duplicateNote() {
-            console.log(this.note)
             let noteCopy = Object.assign({}, { ...this.note });
             noteCopy.id = null
-            console.log(noteCopy)
+          
             noteService.save(noteCopy)
                 .then(noteCopy => {
-                    console.log(noteCopy)
                     showSuccessMsg('note was copied successfully!')
                     this.$emit('duplicateNote', noteCopy)
                 })

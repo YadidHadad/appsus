@@ -27,9 +27,7 @@ export default {
 
     methods: {
         setActiveApp(app) {
-            console.log(app)
             this.activeApp = app
-            console.log({ ...this.activeApp })
         }
     },
 

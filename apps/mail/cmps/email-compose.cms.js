@@ -24,7 +24,6 @@ export default {
     }
   },
   created() {
-    console.log(this.urlInfo)
     if (this.urlInfo.subject !== 'undefined') {
       var newSubject = this.urlInfo.subject.split('$').join(' ')
       this.newMail.subject = newSubject

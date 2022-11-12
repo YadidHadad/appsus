@@ -95,7 +95,6 @@ export default {
             var note = { ...this.note }
             noteService.createNote(note)
                 .then(response => {
-                    console.log('created')
                     this.$emit('newNote', response)
                     showSuccessMsg('note was saved successfully!')
                 })

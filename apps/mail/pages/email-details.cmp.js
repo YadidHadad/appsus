@@ -4,8 +4,10 @@ export default {
   template: `
   
   <section class="email-details grow" v-if="email"> 
+    <section class="email-details-btns">
     <router-link class=" fa left-arrrow-icon" @click="closeEmail" to="/email"></router-link>
     <router-link class="back-list" to="/email"><button class="fa remove-email" @click="removeEmail(email.id)"></button></router-link>
+    </section>
     <section class="email-header">
     <h1>{{email.subject}}</h1>
     <h3><span class=" fa user-circel-icon"></span><span>{{email.from.name}}:</span> <span>{{email.from.emailAddress}}</span></h3>
