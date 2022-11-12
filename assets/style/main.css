@@ -16,7 +16,13 @@
 @import 'cmps/user-msg.css';
 @import 'cmps/search-filter.css';
 @import 'cmps/app-container.css';
+@import 'cmps/label-picker.css';
+@import 'cmps/long-txt.css';
 
 /* Apps */
 @import 'apps/mail/email-app.css';
 @import 'apps/note/note-app.css';
+
+/* Animation */
+
+@import url(../../lib/animate.css);

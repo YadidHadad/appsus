@@ -1,10 +1,9 @@
 .app-container{
     margin-block-start: 80px;
     overflow-y:auto;
-    overflow-x: none;
+    overflow-x:hidden;
     height: calc(100vh - 80px);
-    /* background-color: white; */
-
+    width: 100vw;
 }
 
 .app-container h1{

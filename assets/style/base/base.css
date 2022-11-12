@@ -1,5 +1,9 @@
 * {
   box-sizing: border-box;
+  
+}
+*::first-letter{
+  text-transform: capitalize;
 }
 /* 
 html {
@@ -65,16 +69,41 @@ button {
   outline: 1px solid gold
 }
 
-.screen{
-  margin-block-start: 80px;
-  background-color: gold;
-  /* position: fixed; */
-  width: 100% !important;
-  /* display: none; */
-  /* z-index: 500; */
-  height: calc(100vh - 80px);
-  opacity: 0.5;
+
+/* color pallet */
+.color-pick{
+  width: 20px;
+  height:20px;
+  border-radius: 50%;
+  border: 1px solid var(--clr3);
 }
+
+.color-one{
+  background-color: #ff9aa2;
+}
+.color-two{
+  background-color: #ffb7b2;
+}
+.color-three{
+  background-color: #ffdac1;
+}
+.color-four{
+  background-color: #fff895;
+}
+.color-five{
+  background-color: #e2f0cb;
+}
+.color-six{
+  background-color: #b5ead7;
+}
+.color-seven{
+  background-color: #89daff;
+}
+
+
+
+
+
 @media  (max-width: 780px) {
   .screen{
       margin-block-start: 160px;
