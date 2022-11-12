@@ -28,7 +28,7 @@ export default {
             </div>
             <div class="note-add-slide animate__slideInDown" :class="{isSlideActive:isSlideActive}">
                 <button class="close-slide" @click="isSlideActive = false"><span class="fa close-icon"></span>  </button>
-                <textarea id="w3review" name="w3review" rows="4"  :placeholder="placeholder" v-model="note.info.value"></textarea>
+                <textarea id="w3review" name="w3review" rows="4"  :placeholder="placeholder" v-model="note.info.value" @click.stop="isSlideActive = true"></textarea>
                 <note-edit :note="note" @setNewNoteBGC ="setNoteBGC"   @setNewNoteLabel ="setNoteLabel"  @setNewNotePin="setNotePin"
                 
                 />    

@@ -10,7 +10,6 @@
     margin-inline: 5rem;
     page-break-inside: avoid;  
     break-inside: avoid-column;
-    height: calc(auto + 100px);
 }
 
 

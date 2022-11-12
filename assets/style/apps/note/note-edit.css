@@ -2,7 +2,7 @@
 .note-edit{
     text-align: center;
     bottom: -3rem;
-    z-index: 500;
+    z-index: 1000;
     padding: 0.5rem;
     position: absolute;
     background-color: white;

@@ -1,49 +1,58 @@
 import { utilService } from '../../../services/util.service.js'
 import { noteService } from '../services/note.service.js'
 
-// import noteImg from './note-img.cmp.js'
-// import noteTodos from './note-todos.cmp.js'
-// import noteTxt from './note-txt.cmp.js'
-// import noteVideo from './note-video.cmp.js'
-
-
 export default {
     name: '',
 
-    props: ['note'],
+    props: ['notes'],
 
     template: `
-        <section class="note-details" :style="{backgroundColor: note.info.style.backgroundColor}">
-            <div class="user-preferences flex row align-items justify-center gap">
-                <div @click="closeNote">close</div>
-                <div>color</div>
-                <div @click="removeNote">remove</div>
-                <router-link  :to="'/email/' + email.subject + '/'+ email.body + ''">send as email</router-link>
-            </div>
-            <section v-if="note.type === 'note-img'">
-                <img class="image-container "  :style="{ backgroundImage: 'url(' + note.info.url + ')' }"/>    
-            </section>
-            <h1>{{note.info.title}}</h1>
-            <section v-if="note.type === 'note-txt'">
-                <p>{{note.info.txt}}</p>
-            </section>
-            <section v-if="note.type === 'note-todos'" >
-                <ul v-for="todo in note.info.todos">
-                    <li><span>{{todo.txt}}</span><span>{{todo.doneAt}}</span></li>
-                </ul>
-            </section>
-            <div v-if="note.type === 'note-video'" class="video-container">
-                <iframe :src="note.info.url" frameborder="0" allowfullscreen class="video"></iframe>
-            </div>  
-            <section class="flex row align-items justify-center gap" >
-                <div v-for="label in note.info.label">
-                    <div>{{label}}</div>
-                </div>
-            </section>
+        <section v-if="note" class="note-details-container">
+            <form   class="note-details flex column gap" @submit.prevent="closeEditor">
+                <section>
+                    <input type="text" v-model="note.info.title" />
+                </section>
+                <section v-if="note.info.txt">
+                    <h4>Note text editor</h4>
+                    <textarea type="text"  v-model="note.info.txt"></textarea>
+                </section>
+                <section v-if="note.info.url">
+                    <h4 v-if="note.type === 'note-img'">Note image url editor</h4>
+                    <h4 v-if="note.type === 'note-video'">Note video url editor</h4>
+                    <textarea type="text"  v-model="note.info.url"></textarea>
+                </section>
+                <section v-if="note.type === 'note-todos'" class="todos-details">
+                <h4>Note list editor</h4>
+                    <ul>
+                        <li v-for="todo in note.info.todos" class="flex row justify-between" id="todo.txt"> 
+                            <div>
+                                <input type="checkbox" v-model="todo.doneAt" id="todo.txt" />
+                                <input :class="{greyedTodo : todo.doneAt}" v-model="todo.txt"/>
+                                <br>
+                            </div>
+                            <ul>
+                                <li>
+                                    <span v-if="todo.doneAt">
+                                        {{  getDate(todo.doneAt)  }} 
+                                        <span>&nbsp;&nbsp;</span>
+                                        &#10003;
+                                    </span>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+                <button class="close-editor" @click.stop="closeEditor"><span class="fa close-icon"></span></button>
+            </form>
         </section>
         `,
 
     created() {
+        console.log({ ...this.notes })
+        this.setNoteToEdit()
+        console.log(this.noteId)
+        console.log(this.noteIdx)
+        console.log({ ...this.note })
     },
 
     unmounted() {
@@ -51,10 +60,9 @@ export default {
 
     data() {
         return {
-            email: {
-                subject: this.note.info.title,
-                body: this.note.info.url || this.note.info.txt || 'What on your mind?'
-            }
+            noteId: null,
+            noteIdx: null,
+            note: null,
         }
     },
 
@@ -68,18 +76,51 @@ export default {
                 })
         },
 
-        closeNote() {
-            this.$emit('unselectNote')
+        setNoteToEdit() {
+            if (!this.notes) return
+            console.log(this.notes)
+            this.noteId = this.$route.params.id
+            this.noteIdx = this.notes.findIndex(note => {
+                const noteToCheck = { ...note }
+                return noteToCheck.id === +this.noteId
+            })
+            this.note = this.notes[this.noteIdx]
+        },
 
+        closeEditor() {
+            noteService.save(this.note)
+                .then(() => this.$router.push({ path: '/note' }))
+
+
+        },
+
+        getDate(timestamp) {
+            if (!timestamp) return
+            const date = new Date(timestamp)
+            return date.toLocaleDateString('ils')
+        }
+    },
+
+    computed: {
+        noteOpen() {
+            return this.$route.params.id
         },
     },
 
-    computed: {},
-
     components: {
-        // noteImg,
-        // noteTodos,
-        // noteTxt,
-        // noteVideo,
     },
+
+    watch: {
+        noteOpen() {
+            this.setNoteToEdit()
+            console.log('id changed')
+            console.log(this.$route.params.id)
+
+            if (this.noteOpen === undefined) {
+                this.noteId = null
+                this.noteIdx = null
+                this.note = null
+            }
+        }
+    }
 }

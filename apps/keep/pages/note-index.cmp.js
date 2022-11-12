@@ -4,6 +4,8 @@ import noteFilter from '../cmps/note-filter.cmp.js'
 import noteList from '../cmps/note-list.cmp.js'
 import noteAdd from '../cmps/note-add.cmp.js'
 import noteLabelFilter from '../cmps/note-label-filter.cmp.js'
+import noteDetails from "../cmps/note-details.cmp.js"
+
 
 export default {
     name: 'note-index',
@@ -12,19 +14,26 @@ export default {
         <section class="app-container note-app">
             <note-filter class="search-filter" @filterTitle="setFilterTitle" />
             
-            <div class="flex row">
+            <section class="flex row">
                 
                 <note-label-filter @filterLabel="setFilterLabel"/>
                 
                 <div class="note-lists flex column">
-                        <note-add class="" @newNote="addNewNote" :urlInfo="urlInfo"/>
+                    <note-add class="" @newNote="addNewNote" :urlInfo="urlInfo"/>
                     <note-list 
                     v-if="notes"
                     :notes="notes"
+                    @removeNote="removeNote"
                      />
 
                 </div>
-                </div>
+            </section>
+                <note-details 
+                    v-if="isNoteSelected && notes" 
+                    :notes="notes"
+                    />
+
+
         </section>
 
         `,
@@ -37,17 +46,23 @@ export default {
             notes: null,
             urlInfo: {
                 title: ''
-            }
+            },
         }
     },
-    mounted() {
+    created() {
         this.notesToShow()
+            .then(notes => {
+                console.log(notes)
+                this.notes = notes
+            })
+        console.log(`this.notes:`, this.notes)
         this.urlInfo.value = this.$route.params.title
         console.log(this.$route.path)
         console.log(this.$route.params)
     },
 
     methods: {
+
         setFilterTitle(value) {
             this.filterBy.title = value.title
             this.notesToShow()
@@ -59,34 +74,37 @@ export default {
         },
 
         notesToShow() {
-            noteService.query(this.filterBy)
+            return noteService.query(this.filterBy)
                 .then(notes => {
                     this.notes = notes
                     this.filterBy = {
                         title: '',
                         label: [],
                     }
+                    return notes
                 })
         },
 
         addNewNote(newNote) {
             this.notes.unshift(newNote)
         },
-
-        //--------------------------------------------- edit function
         removeNote(noteId) {
             const idx = this.notes.findIndex(note => note.id === noteId)
             this.notes.splice(idx, 1)
-
         }
-        //--------------------------------------------- edit function
     },
 
-    computed: {},
+    computed: {
+        isNoteSelected() {
+            if (this.$route.params.id) return true
+            else false
+        },
+    },
     components: {
         noteFilter,
         noteList,
         noteAdd,
         noteLabelFilter,
+        noteDetails
     },
 }

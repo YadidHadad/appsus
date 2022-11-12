@@ -1,7 +1,6 @@
 import { noteService } from "../services/note.service.js"
 
 import labelPicker from "../../../cmps/label-picker.cmp.js"
-import noteDetails from "./note-details.cmp.js"
 
 export default {
     name: 'note edit',
@@ -32,17 +31,12 @@ export default {
             <router-link  :to="'/email/' + email.subject + '/'+ email.body + ''"><div class="fa sent-icon"></div></router-link>
             <div class="fa pin-icon" @click.stop="togglePin"></div>
         </section>
-        <note-details 
-            v-if="isNoteSelected" 
-            :note="note"
-            @setNewTitle="setNewTitle"
-            @setNewTxt="setNewTxt"
-            @setNewURL="setNewURL"/>
+ 
         `,
 
     components: {
         labelPicker,
-        noteDetails
+
     },
 
     created() {
@@ -64,7 +58,6 @@ export default {
                 subject: 'hello',
                 body: 'hello',
             },
-            isNoteSelected: false
         }
     },
 
