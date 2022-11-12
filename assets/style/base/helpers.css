@@ -140,6 +140,61 @@
     font-size: 1rem;
     padding-inline-end: 1rem;
 }
+.fa.pallet-icon::before {
+    content: "\f53f";
+    font-size: 1rem;
+    padding-inline-end: 1rem;
+}
+.fa.pallet-icon::before {
+    content: "\f53f";
+    font-size: 1rem;
+    padding-inline-end: 1rem;
+}
+.fa.close-icon::before {
+    content: "\f2d3";
+    font-size: 1rem;
+    padding-inline-end: 1rem;
+}
+.fa.label-icon::before {
+    content: "\f02b";
+    font-size: 1rem;
+    padding-inline-end: 1rem;
+}
+.fa.star-icon::before {
+    content: "\f005";
+    font-size: 1rem;
+    padding-inline-end: 1rem;
+}
+.fa.house-icon::before {
+    content: "\e00d";
+    font-size: 1rem;
+    padding-inline-end: 1rem;
+}
+.fa.work-icon::before {
+    content: "\f0b1";
+    font-size: 1rem;
+    padding-inline-end: 1rem;
+}
+.fa.friends-icon::before {
+    content: "\f500";
+    font-size: 1rem;
+    padding-inline-end: 1rem;
+}
+.fa.backspace-icon::before {
+    content: "\f55a";
+    font-size: 1rem;
+    padding-inline-end: 1rem;
+}
+.fa.sdcard-icon::before {
+    content: "\f7c2";
+    font-size: 1rem;
+    padding-inline-end: 1rem;
+}
+.fa.heart-icon::before {
+    content: "\f004";
+    font-size: 1rem;
+    padding-inline-end: 1rem;
+}
 
 
 

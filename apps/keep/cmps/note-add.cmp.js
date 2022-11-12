@@ -1,12 +1,16 @@
 import { noteService } from "../services/note.service.js"
 
+import noteEdit from "./note-edit.cmp.js"
+
 export default {
     name: 'note-add',
+
     props: ['urlInfo'],
+
     template: `
         <form class="note-add flex column "  @submit.prevent="createNote">
             <div class="flex row grow">
-                <input type="text" placeholder="Enter note title" v-model="note.value"  ref="name" />
+                <input type="text" placeholder="Enter note title" v-model="note.info.value"  ref="name" />
                 <div class="flex row align-center btns-container ">
                     <div :class="{selectedNoteType : note.type==='txt' }">
                         <span @click="setNoteType('txt')" class="fa text-icon add-btn"></span>
@@ -22,36 +26,56 @@ export default {
                     </div>
                 </div>
             </div>
-            <textarea id="w3review" name="w3review" rows="4"  :placeholder="placeholder"></textarea>
-            <div>control buttons</div>
+            <div class="note-add-slide">
+                <textarea id="w3review" name="w3review" rows="4"  :placeholder="placeholder"></textarea>
+                <note-edit :note="note"/>    
+
+            </div>
+            
         </form>
         `,
-    components: {},
+
+    components: {
+        noteEdit
+    },
+
     created() {
         console.log(this.urlInfo)
 
         if (this.urlInfo.value) {
 
             if (this.urlInfo.value !== '') {
-                this.note.value = this.urlInfo.value
+                this.note.info.value = this.urlInfo.value
                 this.createNote()
             }
         }
-
-
     },
+
     mounted() {
         this.$refs.name.focus()
     },
+
     data() {
         return {
+            // note: {
+            //     type: 'txt',
+            //     value: null,
+            // },
+            placeholder: `Enter text to remember`,
+
             note: {
                 type: 'txt',
-                value: null,
+                isPinned: false,
+                info: {
+                    title: null,
+                    value: null,
+                    label: [],
+                    style: { backgroundColor: "white" }
+                }
             },
-            placeholder: `Enter text to remember`,
         }
     },
+
     methods: {
         setNoteType(type) {
             if (type === 'txt') {
@@ -66,18 +90,20 @@ export default {
             this.note.type = type
             this.$refs.name.focus()
         },
+
         createNote() {
             var type = this.note.type
-            var value = this.note.value
+            var value = this.note.info.value
 
             noteService.createNote(type, value)
                 .then(response => {
                     this.$emit('newNote', response)
                 })
-            this.note.value = ''
+            this.note.info.value = ''
         }
 
     },
+
     computed: {
     },
 }

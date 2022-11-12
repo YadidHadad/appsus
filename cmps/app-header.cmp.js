@@ -12,7 +12,7 @@ export default {
             </div>
             <div @click="isNavShown = !isNavShown"><h1 class="fa navbar-icon"></h1></div>
 
-            <app-navbar v-if="isNavShown === true" @setApp="setActiveApp" @click="isNavShown = !isNavShown"/>
+            <app-navbar v-if="isNavShown === true"  @click="isNavShown = !isNavShown"/>
      `,
     data() {
         return {
@@ -30,25 +30,23 @@ export default {
             console.log(app)
             this.activeApp = app
             console.log({ ...this.activeApp })
-
         }
-
     },
 
     computed: {
         appOpen() {
-            const route = this.$route.path
-            // if (route !== '/note') return '/email'
             return this.$route.path
         },
     },
 
     watch: {
         appOpen() {
-            console.log('Book Id changed')
-            console.log(this.appOpen)
-            if (this.$route.params === undefined) return
-            // this.loadBook()
+            const url = this.$route.path
+
+            if (url.startsWith('/email')) this.activeApp = 'Mail'
+            else if (url.startsWith('/note')) this.activeApp = 'Note'
+            else if (url.startsWith('/books')) this.activeApp = 'Books'
+            else this.activeApp = 'Home'
         }
     },
     components: {

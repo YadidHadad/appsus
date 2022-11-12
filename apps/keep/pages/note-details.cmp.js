@@ -9,7 +9,9 @@ import noteVideo from '../cmps/note-video.cmp.js'
 
 export default {
     name: '',
+
     props: ['note'],
+
     template: `
         <section class="note-details" :style="{backgroundColor: note.info.style.backgroundColor}">
             <div class="user-preferences flex row align-items justify-center gap">
@@ -17,7 +19,6 @@ export default {
                 <div>color</div>
                 <div @click="removeNote">remove</div>
                 <router-link  :to="'/email/' + email.subject + '/'+ email.body + ''">send as email</router-link>
-
             </div>
             <section v-if="note.type === 'note-img'">
                 <img class="image-container "  :style="{ backgroundImage: 'url(' + note.info.url + ')' }"/>    
@@ -39,14 +40,16 @@ export default {
                     <div>{{label}}</div>
                 </div>
             </section>
-            
         </section>
         `,
+
     created() {
     },
+
     unmounted() {
         console.log(this.$route)
     },
+
     data() {
         return {
 
@@ -57,6 +60,7 @@ export default {
 
         }
     },
+
     methods: {
         removeNote() {
             console.log(this.note)
@@ -72,7 +76,9 @@ export default {
 
         },
     },
+
     computed: {},
+
     components: {
         noteImg,
         noteTodos,
