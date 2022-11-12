@@ -77,65 +77,50 @@ function getPrevNoteId(noteId) {
   })
 }
 
-function createNote(type, value) {
-  const note = _getNoteData(type, value)
-  return save(note)
+function createNote(note) {
+  console.log(`note:`, note)
+  const newNote = _getNoteData(note)
+  console.log(`newNote:`, newNote)
+  return save(newNote)
     .then(response => { return response })
 }
 
-function _getNoteData(type, value) {
+function _getNoteData(note) {
+  console.log(`note:`, note)
 
-  if (type === 'txt') return {
-    type: 'note-txt',
+  const { type } = note
+  const { title, value, label } = note.info
+  const { backgroundColor } = note.info.style
+
+  const newNote = {
+    type,
     isPinned: false,
     info: {
-      title: value,
-      txt: '',
-      label: [],
+      title,
+      label,
       style: {
-        backgroundColor: 'white'
+        backgroundColor,
       }
     }
   }
-  else if (type === 'img') return {
-    type: 'note-img',
-    isPinned: false,
-    info: {
-      title: '',
-      url: value,
-      label: [],
-      style: {
-        backgroundColor: 'white'
+
+  if (type === 'note-txt') {
+
+    newNote.info.txt = value
+
+  } else if (type === 'note-img' || type === 'note-video') {
+
+    newNote.info.url = value
+
+  } else if (type === 'note-todos') {
+
+    newNote.info.todos = value.split(',').map(todo => {
+      return {
+        txt: todo,
+        doneAt: null,
       }
-    }
+    })
+
   }
-  else if (type === 'video') return {
-    type: 'note-video',
-    isPinned: false,
-    info: {
-      title: '',
-      url: value,
-      label: [],
-      style: {
-        backgroundColor: 'white'
-      }
-    }
-  }
-  else if (type === 'todos') return {
-    type: 'note-todos',
-    isPinned: false,
-    info: {
-      title: '',
-      label: [],
-      todos: value.split(',').map(todo => {
-        return {
-          txt: todo,
-          doneAt: null,
-        }
-      }),
-      style: {
-        backgroundColor: 'white'
-      }
-    }
-  }
+  return newNote
 }

@@ -12,7 +12,7 @@ export default {
 
             <h5>{{note.info.title}}</h5>
             <!-- <p>{{note.info.txt..slice(0,)}}</p> -->
-            <long-txt :txt="note.info.txt"/>
+            <long-txt v-if="note.info.txt" :txt="note.info.txt"/>
             
             <note-edit :note="note" @removeNote="removeNote"/>
         </section>

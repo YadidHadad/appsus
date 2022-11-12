@@ -63,7 +63,7 @@ input:focus{
 }
 
 
-.note-add-slide:hover{
+.isSlideActive{
     top: 4rem;
     opacity: 1;
     /* transform: scaleY(1); */
@@ -74,4 +74,53 @@ input:focus{
     width: 100%;
 
 }
+
+.close-slide{
+    background-color: transparent;
+    border: none;
+    position: absolute;
+
+    right: -1rem;
+
+}
+
+
+
+/* -----------RESPONSIVE----------- */
+
+@media  (max-width: 780px) {
+
+    .note-add{
+        flex-direction: column;
+        width: calc(100vw - 4rem);
+    }
+    .btns-container{
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .note-add>div:first-of-type{
+        flex-direction: column;
+    }
+    .note-add input{
+        order: 1;
+    }
+    .btns-container{
+        /* order: 1; */
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .note-add-slide{
+        top: 6rem;
+    }
+    .isSlideActive{
+        top: 7rem;
+        opacity: 1;
+        /* transform: scaleY(1); */
+        
+    }
+}
+
 

@@ -10,28 +10,29 @@ export default {
     template: `
         <form class="note-add flex column "  @submit.prevent="createNote">
             <div class="flex row grow">
-                <input type="text" placeholder="Enter note title" v-model="note.info.value"  ref="name" />
+                <input type="text" placeholder="Enter note title" v-model="note.info.title"  ref="name" />
                 <div class="flex row align-center btns-container ">
-                    <div :class="{selectedNoteType : note.type==='txt' }">
-                        <span @click="setNoteType('txt')" class="fa text-icon add-btn"></span>
+                    <div :class="{selectedNoteType : note.type==='note-txt' }">
+                        <span @click="setNoteType('note-txt')" class="fa text-icon add-btn"></span>
                     </div>                    
-                    <div :class="{selectedNoteType : note.type==='img' }">
-                        <span @click="setNoteType('img')" class="fa img-icon add-btn" ></span>
+                    <div :class="{selectedNoteType : note.type==='note-img' }">
+                        <span @click="setNoteType('note-img')" class="fa img-icon add-btn" ></span>
                     </div>
-                    <div :class="{selectedNoteType : note.type==='video' }">
-                        <span @click="setNoteType('video')" class="fa video-icon add-btn" ></span>
+                    <div :class="{selectedNoteType : note.type==='note-video' }">
+                        <span @click="setNoteType('note-video')" class="fa video-icon add-btn" ></span>
                     </div>
-                    <div :class="{selectedNoteType : note.type==='todos' }">
-                        <span @click="setNoteType('todos')" class="fa list-icon add-btn" ></span>
+                    <div :class="{selectedNoteType : note.type==='note-todos' }">
+                        <span @click="setNoteType('note-todos')" class="fa list-icon add-btn" ></span>
                     </div>
                 </div>
             </div>
-            <div class="note-add-slide animate__slideInDown">
-                <textarea id="w3review" name="w3review" rows="4"  :placeholder="placeholder"></textarea>
-                <note-edit :note="note"/>    
-
+            <div class="note-add-slide animate__slideInDown" :class="{isSlideActive:isSlideActive}">
+                <button class="close-slide" @click="isSlideActive = false"><span class="fa close-icon"></span>  </button>
+                <textarea id="w3review" name="w3review" rows="4"  :placeholder="placeholder" v-model="note.info.value"></textarea>
+                <note-edit :note="note" @setNewNoteBGC ="setNoteBGC"   @setNewNoteLabel ="setNoteLabel"  @setNewNotePin="setNotePin"
+                
+                />    
             </div>
-            
         </form>
         `,
 
@@ -55,14 +56,10 @@ export default {
 
     data() {
         return {
-            // note: {
-            //     type: 'txt',
-            //     value: null,
-            // },
             placeholder: `Enter text to remember`,
 
             note: {
-                type: 'txt',
+                type: 'note-txt',
                 isPinned: false,
                 info: {
                     title: null,
@@ -71,35 +68,50 @@ export default {
                     style: { backgroundColor: "white" }
                 }
             },
+            isSlideActive: false,
         }
     },
 
     methods: {
         setNoteType(type) {
-            if (type === 'txt') {
+            if (type === 'note-txt') {
                 this.placeholder = 'Enter text to remember'
-            } else if (type === 'img') {
+            } else if (type === 'note-img') {
                 this.placeholder = 'Enter img url to remember'
-            } else if (type === 'video') {
+            } else if (type === 'note-video') {
                 this.placeholder = 'Enter video url to remember'
-            } else if (type === 'todos') {
+            } else if (type === 'note-todos') {
                 this.placeholder = 'Enter comma separated list to remember'
             }
+            this.closeSlide(type)
             this.note.type = type
             this.$refs.name.focus()
         },
-
         createNote() {
-            var type = this.note.type
-            var value = this.note.info.value
 
-            noteService.createNote(type, value)
+            if (!{ ...this.note.title }) return
+            var note = { ...this.note }
+            noteService.createNote(note)
                 .then(response => {
+                    console.log('created')
                     this.$emit('newNote', response)
                 })
+            this.note.title = ''
             this.note.info.value = ''
+        },
+        closeSlide(type) {
+            if (type != this.note.type) return
+            else this.isSlideActive = !this.isSlideActive
+        },
+        setNoteBGC(color) {
+            this.note.info.style.backgroundColor = color
+        },
+        setNoteLabel(labels) {
+            this.note.info.label = labels
+        },
+        setNotePin(value) {
+            this.note.isPinned = value
         }
-
     },
 
     computed: {

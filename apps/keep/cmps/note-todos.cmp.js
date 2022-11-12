@@ -13,7 +13,7 @@ export default {
             <h5>{{note.info.title}}</h5>
             <ul>
                 <li v-for="todo in note.info.todos" >
-                    <span :class="{greyed: todo.doneAt}">{{todo.txt}}</span>
+                    <span :class="{greyedTodo: todo.doneAt}">{{todo.txt}}</span>
                 </li>
             </ul>
             <note-edit :note="note" @removeNote="removeNote"/>

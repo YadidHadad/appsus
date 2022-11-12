@@ -6,7 +6,7 @@ export default {
     name: 'note edit',
 
     props: ['note'],
-    emits: ['removeNote'],
+    emits: ['removeNote', 'setNewNoteBGC', 'setNewNoteLabel', 'setNewNotePin'],
 
     template: `
         <section class="note-edit">
@@ -62,6 +62,7 @@ export default {
     methods: {
         removeNote() {
             var note = { ...this.note }
+            if (!this.note.id) return
             noteService.remove(note.id)
                 .then(() => {
                     this.$emit('removeNote', this.note.id)
@@ -70,11 +71,16 @@ export default {
 
         editNote(note) {
             console.log('edit note')
+            if (!this.note.id) return
         },
 
         changeBGC(note, color) {
             this.note.info.style.backgroundColor = color
             var note = { ...this.note }
+            if (!this.note.id) {
+                this.$emit('setNewNoteBGC', color)
+                return
+            }
             noteService.save(note)
                 .then(() => { })
         },
@@ -83,6 +89,10 @@ export default {
             this.chosenLabels = labels
             this.note.info.label = labels
             var note = { ...this.note }
+            if (!this.note.id) {
+                this.$emit('setNewNoteLabel', labels)
+                return
+            }
             noteService.save(note)
                 .then(() => { })
         },
@@ -90,6 +100,10 @@ export default {
         togglePin(note) {
             this.note.isPinned = !this.note.isPinned
             var note = { ...this.note }
+            if (!this.note.id) {
+                this.$emit('setNewNotePin', !{ ...this.note.isPinned })
+                return
+            }
             noteService.save(note)
                 .then(() => { })
         },
