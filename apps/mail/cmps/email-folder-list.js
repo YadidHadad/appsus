@@ -19,9 +19,6 @@ export default {
       },
     }
   },
-  created(){
-    console.log(this.emails);
-  },
 
   methods: {
     setFilterByStatus(status) {

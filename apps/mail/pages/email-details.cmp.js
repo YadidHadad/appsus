@@ -5,6 +5,7 @@ export default {
   
   <section class="email-details grow" v-if="email"> 
     <router-link class=" fa left-arrrow-icon" @click="closeEmail" to="/email"></router-link>
+    <router-link class="back-list" to="/email"><button class="fa remove-email" @click="removeEmail(email.id)"></button></router-link>
     <section class="email-header">
     <h1>{{email.subject}}</h1>
     <h3><span class=" fa user-circel-icon"></span><span>{{email.from.name}}:</span> <span>{{email.from.emailAddress}}</span></h3>
@@ -18,6 +19,7 @@ export default {
   data() {
     return {
       email: null,
+      emails: null,
     }
   },
   created() {
@@ -27,6 +29,11 @@ export default {
   methods: {
     closeEmail() {
       this.$emit('closeEmail')
+    },
+
+    removeEmail(emailId) {
+      this.$emit('removeEmail', emailId)
+      this.closeEmail()
     },
   },
 

@@ -21,15 +21,18 @@ export default {
         subject: '',
         body: '',
       },
-
-
     }
   },
   created() {
     console.log(this.urlInfo)
-
-    if (this.urlInfo.subject !== 'undefined') this.newMail.subject = this.urlInfo.subject
-    if (this.urlInfo.body !== 'undefined') this.newMail.body = this.urlInfo.body
+    if (this.urlInfo.subject !== 'undefined') {
+      var newSubject = this.urlInfo.subject.split('$').join(' ')
+      this.newMail.subject = newSubject
+    }
+    if (this.urlInfo.body !== 'undefined') {
+      var newBody = this.urlInfo.body.split(']').join(' ')
+      this.newMail.body = newBody
+    }
   },
   methods: {
     sendMail() {
@@ -38,7 +41,6 @@ export default {
     close() {
       this.$emit('close')
     },
-
   },
 
   mounted() {

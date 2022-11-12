@@ -39,12 +39,9 @@ export default {
     this.emailsToShow({ ...this.filterBy }).then((emails) => {
       this.emails = emails
     })
-
     if (this.$route.params.subject || this.$route.params.body) {
-      console.log(this.$route.params.subject, this.$route.params.body)
       this.isComposeOpen = true
     }
-
   },
 
   methods: {

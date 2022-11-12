@@ -6,7 +6,7 @@
 
 .email-app{
     display: flex;
-    /* margin-top: 50px;    */
+    height: 100vh !important;
 }
 
 .open-mobile-menu{
@@ -34,12 +34,14 @@
       height: 100vh;
       width: 67vw;
     }
+
     .email-folder-list button {
       z-index: 10;
       position: fixed;
       right: 30px;
       bottom: 30px;
     }
+
     .open-mobile-menu {
       display: block !important;
     }

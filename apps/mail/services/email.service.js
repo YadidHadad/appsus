@@ -17,17 +17,20 @@ export const emailService = {
 }
 
 function query(filterBy) {
-  return storageService.query(EMAILS_KEY).then((emails) => {
-    const regex = new RegExp(filterBy.text, 'i')
-    let newEmails = emails.filter((email) => regex.test(email.subject))
-    if (filterBy.isRead != 'all') {
-      newEmails = newEmails.filter((email) => (filterBy.isRead ? email.isRead : !email.isRead))
-    }
-    if (filterBy.status) {
-      newEmails = newEmails.filter((email) => email.status === filterBy.status)
-    }
-    return newEmails
-  })
+  if (filterBy === undefined) {
+    return storageService.query(EMAILS_KEY)
+  } else
+    return storageService.query(EMAILS_KEY).then((emails) => {
+      const regex = new RegExp(filterBy.text, 'i')
+      let newEmails = emails.filter((email) => regex.test(email.subject))
+      if (filterBy.isRead != 'all') {
+        newEmails = newEmails.filter((email) => (filterBy.isRead ? email.isRead : !email.isRead))
+      }
+      if (filterBy.status) {
+        newEmails = newEmails.filter((email) => email.status === filterBy.status)
+      }
+      return newEmails
+    })
 }
 
 function get(emailId) {
