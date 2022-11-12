@@ -11,7 +11,7 @@ export default {
           <button class="fa arrow-icon open-mobile-menu" @click="toggleMobileMenu"></button>
           <section class="app-container email-app">
             <email-filter class="search-filter" @filter="filter" />
-            <email-folder-list class="email-folder-list" :class="show" @filterByStatus="filterStatus" @composeEmail="openEmailCompose" :emails="emails"/>
+            <email-folder-list class="email-folder-list" :class="show" @filterByStatus="filterStatus" @composeEmail="openEmailCompose" />
             <email-compose class="email-compose" v-if="isComposeOpen" @sendMail="composeEmail" @close="openEmailCompose"  :urlInfo="urlInfo"/>
             <email-list v-if="emails" @remove="removeEmail" @read="readenEmail" :emails="emails"/>
         </section>
@@ -31,21 +31,20 @@ export default {
         subject: this.$route.params.subject,
         body: this.$route.params.body,
       },
+    
     }
   },
 
   created() {
     this.emailsToShow({ ...this.filterBy }).then((emails) => {
       this.emails = emails
-      console.log(emails)
     })
-
-    console.log(this.$route)
 
     if (this.$route.params.subject || this.$route.params.body) {
       console.log(this.$route.params.subject, this.$route.params.body)
       this.isComposeOpen = true
     }
+
   },
 
   methods: {
@@ -86,7 +85,6 @@ export default {
     sendToNote(email) {
       emailService.sendEmailToNote(email)
     },
-
     composeEmail(email) {
       const { subject, to, body } = email
       const newEmail = emailService.getEmptyEmail(subject, body, to)
@@ -100,6 +98,12 @@ export default {
       this.isMenuOpen = !this.isMenuOpen
       console.log('hi')
     },
+    // getUnredCount() {
+    //   const emails = this.emails
+    //   console.log(emails)
+    //   const countUnred = emails.filter((email) => !email.isRead)
+    //   return countUnred.length
+    // },
   },
 
   computed: {

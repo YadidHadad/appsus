@@ -20,3 +20,42 @@
     padding-inline-start: 1rem;
     transition: all 0.5s;
 }
+
+/* Mobile */
+
+@media (max-width: 700px) {
+    .email-folder-list {
+      z-index: 50;
+      align-items: left;
+      position: fixed;
+      top: 0;
+      left: -100%;
+      /* transform: translate(-50%, -50%);  */
+      height: 100vh;
+      width: 67vw;
+    }
+    .email-folder-list button {
+      z-index: 10;
+      position: fixed;
+      right: 30px;
+      bottom: 30px;
+    }
+    .open-mobile-menu {
+      display: block !important;
+    }
+  
+    .on-mobile-menu-open {
+      display: none;
+      background-color: rgba(134, 130, 130, 0.384);
+      position: absolute;
+      top:0;
+      z-index: 40;
+      width: 100vw;
+      height: 100vh;
+      transition: all 0.5s;
+    }
+    .email-details{
+        width: 100vw;
+    }
+  }
+  

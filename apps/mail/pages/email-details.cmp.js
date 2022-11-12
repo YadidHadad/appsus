@@ -4,9 +4,14 @@ export default {
   template: `
   
   <section class="email-details grow" v-if="email"> 
-    <router-link @click="closeEmail" to="/email">←</router-link>
+    <router-link class=" fa left-arrrow-icon" @click="closeEmail" to="/email"></router-link>
+    <section class="email-header">
     <h1>{{email.subject}}</h1>
+    <h3><span class=" fa user-circel-icon"></span><span>{{email.from.name}}:</span> <span>{{email.from.emailAddress}}</span></h3>
+    </section>
+    <section class="email-body">
     <p>{{email.body}}</p>
+    </section>
   </section>
         `,
 

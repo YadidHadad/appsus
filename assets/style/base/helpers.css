@@ -147,8 +147,8 @@
 }
 .fa.left-arrrow-icon::before {
   content: '\f060';
-  font-size: 1rem;
-  padding: 0.5rem;
+  font-size: 1.5rem;
+  padding-top: 0.5rem;
 }
 .fa.pallet-icon::before {
     content: "\f53f";
@@ -204,6 +204,12 @@
     content: "\f004";
     font-size: 1rem;
     padding-inline-end: 1rem;
+}
+.fa.user-circel-icon::before {
+    content: "\f2bd";
+    font-size: 2.5rem;
+    padding-inline-end: 0.5rem;
+    color: rgba(110, 27, 158, 0.842);
 }
 
 /* hidden */
