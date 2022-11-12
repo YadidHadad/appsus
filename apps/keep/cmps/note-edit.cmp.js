@@ -29,6 +29,7 @@ export default {
                     <label-picker  @editLabels="editLabels" :labels="note.info.label"/> 
                 </div>
             </div>
+            <router-link  :to="'/email/' + email.subject + '/'+ email.body + ''"><div class="fa sent-icon" @click.stop="togglePin"></div></router-link>
             <div class="fa pin-icon" @click.stop="togglePin"></div>
         </section>
         `,
@@ -38,15 +39,24 @@ export default {
     },
 
     created() {
-        // console.log(`this.note:`, [...this.note.info.label])
+
+        if (this.note.info.title) {
+            this.email.subject = this.note.info.title.split(' ').join('$')
+        }
+        if (this.note.info.url) {
+            this.email.body = this.note.info.url.split('/').join(']')
+        } else if (this.note.info.txt) {
+            this.email.body = this.note.info.txt.split(' ').join('$')
+        }
     },
 
     data() {
         return {
             chosenLabels: [],
-            // chosenLabels: [...this.note.info.label],
-
-
+            email: {
+                subject: 'hello',
+                body: 'hello',
+            },
         }
     },
 
@@ -58,15 +68,14 @@ export default {
             noteService.remove(note.id)
                 .then(() => {
                     this.$emit('removeNote', this.note.id)
-
                 })
         },
+
         editNote(note) {
             console.log('edit note')
         },
 
         changeBGC(note, color) {
-            console.log('change BGC', color)
             this.note.info.style.backgroundColor = color
             var note = { ...this.note }
             console.log(note)
@@ -75,14 +84,9 @@ export default {
         },
 
         editLabels(labels) {
-            console.log('note-edit')
-            console.log('current assigned labels', [...this.note.info.label])
-            console.log(labels)
             this.chosenLabels = labels
             this.note.info.label = labels
-            console.log('new assigned labels', [...this.note.info.label])
             var note = { ...this.note }
-            // console.log({...note})
             noteService.save(note)
                 .then(() => { })
         },

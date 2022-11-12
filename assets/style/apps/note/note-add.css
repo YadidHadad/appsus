@@ -10,7 +10,7 @@
     box-shadow: 1px 1px 5px 0px var(--clr2);
     background-color: var(--clr--1);
     flex-direction: column;
-    z-index: 1000000;
+    z-index: 100;
 }
 
 .note-add:hover{
@@ -44,7 +44,7 @@ input:focus{
 .note-add .note-edit{
     opacity: 1;
     right: 0.5rem;
-    bottom: 0.5rem;
+    bottom: 0;
     background-color: transparent;
     box-shadow: none;
 }
@@ -53,10 +53,13 @@ input:focus{
     position: absolute;
     opacity: 0;
     width: 100%;
-    top: 2rem;
+    top: 3rem;
     /* transform: scaleY(0.5); */
     
     transition: all 0.2s ease-in-out;
+    background-color: var(--clr--7);
+    border-radius: 0.5rem;
+    outline: 1px solid black;
 }
 
 

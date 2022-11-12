@@ -50,23 +50,17 @@ export default {
         }
     },
     mounted() {
-
         this.notesToShow()
-
         this.urlInfo.value = this.$route.params.value
-        console.log(this.$route)
-        console.log(this.$route.params.value)
     },
+
     methods: {
         setFilterTitle(value) {
-            console.log(`value:`, value)
             this.filterBy.title = value.title
             this.notesToShow()
         },
 
         setFilterLabel(value) {
-            console.log(`value:`, value)
-            console.log(`value:`, value)
             this.filterBy.label = value
             this.notesToShow()
         },
@@ -83,7 +77,6 @@ export default {
         },
 
         addNewNote(newNote) {
-            console.log(newNote)
             this.notes.unshift(newNote)
         },
 
@@ -92,23 +85,16 @@ export default {
 
         },
         resetSelectedNote() {
-            console.log('close')
             this.selectedNote = null
 
         },
-
-
 
         //--------------------------------------------- edit function
         removeNote(noteId) {
             const idx = this.notes.findIndex(note => note.id === noteId)
             this.notes.splice(idx, 1)
-            console.log({ ...this.notes })
+
         }
-
-
-
-
         //--------------------------------------------- edit function
     },
 

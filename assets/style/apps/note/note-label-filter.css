@@ -5,6 +5,7 @@
     padding-inline-end: 1rem;
     padding-block-start: 1rem;
     background-color: var(--bgc);
+    z-index: 200;
 }
 
 .note-label-filter ul li{
@@ -67,7 +68,6 @@
     }
 
     .note-label-filter{
-        z-index: 100;
         position: fixed;
         background-color: transparent;
         bottom: 7rem;

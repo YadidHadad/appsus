@@ -26,7 +26,7 @@ export default {
                     </div>
                 </div>
             </div>
-            <div class="note-add-slide">
+            <div class="note-add-slide animate__slideInDown">
                 <textarea id="w3review" name="w3review" rows="4"  :placeholder="placeholder"></textarea>
                 <note-edit :note="note"/>    
 

@@ -9,7 +9,7 @@ export default {
     emits: ['removeNote'],
     template: `
         <section class='note-img' :style="style" >
-            <div v-if="note.isPinned" class="pinned" @click="togglePin(note)"><span class="fa pin-icon"></span></div>
+                <div v-if="note.isPinned"  class="pinned" @click="togglePin(note)"><span class="fa pin-icon"></span></div>
 
             <div class="image-container "  :style="{ backgroundImage: 'url(' + note.info.url + ')' }" >
             </div>

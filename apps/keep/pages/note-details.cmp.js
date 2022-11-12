@@ -52,12 +52,10 @@ export default {
 
     data() {
         return {
-
             email: {
                 subject: this.note.info.title,
                 body: this.note.info.url || this.note.info.txt || 'What on your mind?'
             }
-
         }
     },
 
