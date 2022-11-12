@@ -3,7 +3,6 @@ import { noteService } from '../services/note.service.js'
 import noteFilter from '../cmps/note-filter.cmp.js'
 import noteList from '../cmps/note-list.cmp.js'
 import noteAdd from '../cmps/note-add.cmp.js'
-import noteDetails from './note-details.cmp.js'
 import noteLabelFilter from '../cmps/note-label-filter.cmp.js'
 
 export default {
@@ -13,23 +12,16 @@ export default {
         <section class="app-container note-app">
             <note-filter class="search-filter" @filterTitle="setFilterTitle" />
             
-            <note-details 
-            v-if="selectedNote" 
-            :note="selectedNote"
-            @noteToRemove="removeNote"
-            @unselectNote="resetSelectedNote"/>
-            
             <div class="flex row">
                 
-                <label-filter @filterLabel="setFilterLabel"/>
+                <note-label-filter @filterLabel="setFilterLabel"/>
                 
                 <div class="note-lists flex column">
                         <note-add class="" @newNote="addNewNote" :urlInfo="urlInfo"/>
                     <note-list 
                     v-if="notes"
                     :notes="notes"
-                    @selectedNoteToShow="setSelectedNote"
-                    @removeNote="removeNote" />
+                     />
 
                 </div>
                 </div>
@@ -43,15 +35,16 @@ export default {
                 label: [],
             },
             notes: null,
-            selectedNote: null,
             urlInfo: {
-                value: ''
+                title: ''
             }
         }
     },
     mounted() {
         this.notesToShow()
-        this.urlInfo.value = this.$route.params.value
+        this.urlInfo.value = this.$route.params.title
+        console.log(this.$route.path)
+        console.log(this.$route.params)
     },
 
     methods: {
@@ -80,15 +73,6 @@ export default {
             this.notes.unshift(newNote)
         },
 
-        setSelectedNote(note) {
-            this.selectedNote = note
-
-        },
-        resetSelectedNote() {
-            this.selectedNote = null
-
-        },
-
         //--------------------------------------------- edit function
         removeNote(noteId) {
             const idx = this.notes.findIndex(note => note.id === noteId)
@@ -103,10 +87,6 @@ export default {
         noteFilter,
         noteList,
         noteAdd,
-        noteDetails,
-        labelFilter: noteLabelFilter,
+        noteLabelFilter,
     },
 }
-
-
-// label: ['critical', 'family', 'work', 'friends', 'spam', 'memories', 'romantic']

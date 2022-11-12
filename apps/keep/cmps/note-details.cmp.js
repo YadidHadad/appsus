@@ -1,10 +1,10 @@
 import { utilService } from '../../../services/util.service.js'
 import { noteService } from '../services/note.service.js'
 
-import noteImg from '../cmps/note-img.cmp.js'
-import noteTodos from '../cmps/note-todos.cmp.js'
-import noteTxt from '../cmps/note-txt.cmp.js'
-import noteVideo from '../cmps/note-video.cmp.js'
+// import noteImg from './note-img.cmp.js'
+// import noteTodos from './note-todos.cmp.js'
+// import noteTxt from './note-txt.cmp.js'
+// import noteVideo from './note-video.cmp.js'
 
 
 export default {
@@ -77,9 +77,9 @@ export default {
     computed: {},
 
     components: {
-        noteImg,
-        noteTodos,
-        noteTxt,
-        noteVideo,
+        // noteImg,
+        // noteTodos,
+        // noteTxt,
+        // noteVideo,
     },
 }

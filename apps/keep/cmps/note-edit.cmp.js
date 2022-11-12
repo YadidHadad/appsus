@@ -1,6 +1,7 @@
 import { noteService } from "../services/note.service.js"
 
 import labelPicker from "../../../cmps/label-picker.cmp.js"
+import noteDetails from "./note-details.cmp.js"
 
 export default {
     name: 'note edit',
@@ -10,7 +11,7 @@ export default {
 
     template: `
         <section class="note-edit">
-            <div class="fa trash-icon" @click.stop="removeNote"></div>
+            <div v-if="this.note.id" class="fa trash-icon" @click.stop="removeNote"></div>
             <div class="fa pallet-icon show-pallet" >
                 <section class="color-pallet flex row">
                     <div class="color-one color-pick" @click.stop="changeBGC(note,'#ff9aa2')"></div>
@@ -22,19 +23,26 @@ export default {
                     <div class="color-seven color-pick" @click.stop="changeBGC(note,'#89daff')"></div>
                 </section>
             </div>
-            <div class="fa draft-icon" @click.stop="editNote"></div>
+            <router-link v-if="this.note.id"  :to="'/note/' + this.note.id " @click="changeRoute"><div class="fa draft-icon"></div></router-link>
             <div class="fa label-icon show-label-picker">
                 <div class="label-picker-container">
                     <label-picker  @editLabels="editLabels" :labels="note.info.label"/> 
                 </div>
             </div>
-            <router-link  :to="'/email/' + email.subject + '/'+ email.body + ''"><div class="fa sent-icon" @click.stop="togglePin"></div></router-link>
+            <router-link  :to="'/email/' + email.subject + '/'+ email.body + ''"><div class="fa sent-icon"></div></router-link>
             <div class="fa pin-icon" @click.stop="togglePin"></div>
         </section>
+        <note-details 
+            v-if="isNoteSelected" 
+            :note="note"
+            @setNewTitle="setNewTitle"
+            @setNewTxt="setNewTxt"
+            @setNewURL="setNewURL"/>
         `,
 
     components: {
-        labelPicker
+        labelPicker,
+        noteDetails
     },
 
     created() {
@@ -56,10 +64,21 @@ export default {
                 subject: 'hello',
                 body: 'hello',
             },
+            isNoteSelected: false
         }
     },
 
     methods: {
+        changeRoute() {
+            this.$route.params.id = this.note.id
+            this.isNoteSelected = true
+
+        },
+        closeNote() {
+            this.$route.params.id = undefined
+            this.isNoteSelected = false
+
+        },
         removeNote() {
             var note = { ...this.note }
             if (!this.note.id) return
@@ -107,6 +126,15 @@ export default {
             noteService.save(note)
                 .then(() => { })
         },
+        setNewTitle() {
+            console.log('new title')
+        },
+        setNewTxt() {
+            console.log('new txt')
+        },
+        setNewURL() {
+            console.log('new url')
+        }
 
     },
 
