@@ -1,11 +1,14 @@
 import { utilService } from '../../../services/util.service.js'
 import { noteService } from '../services/note.service.js'
+import { showSuccessMsg } from '../../../services/event-bus.service.js'
+import { showErrorMsg } from '../../../services/event-bus.service.js'
 
 import noteEdit from './note-edit.cmp.js'
 
 export default {
     name: '',
     props: ['note'],
+    emits: ['removeNote', 'duplicateNote'],
     template: `
         <section class='note-video' :style="style">
             <div v-if="note.isPinned" class="pinned" @click="togglePin(note)"><span class="fa pin-icon"></span></div>
@@ -13,7 +16,7 @@ export default {
             <div class="video-container">
                 <iframe :src="note.info.url" frameborder="0" allowfullscreen class="video"></iframe>
             </div>  
-            <note-edit :note="note" @removeNote="removeNote"/>
+            <note-edit :note="note" @removeNote="removeNote" @duplicateNote="duplicateNote"/>
         </section>
         `,
     components: {
@@ -38,6 +41,9 @@ export default {
         },
         removeNote(noteId) {
             this.$emit('removeNote', noteId)
+        },
+        duplicateNote(noteCopy) {
+            this.$emit('duplicateNote', noteCopy)
         }
     },
     computed: {

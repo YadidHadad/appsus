@@ -1,4 +1,6 @@
 import { noteService } from "../services/note.service.js"
+import { showSuccessMsg } from '../../../services/event-bus.service.js'
+import { showErrorMsg } from '../../../services/event-bus.service.js'
 
 import noteEdit from "./note-edit.cmp.js"
 
@@ -59,7 +61,7 @@ export default {
             placeholder: `Enter text to remember`,
 
             note: {
-                type: 'note-txt',
+                type: '',
                 isPinned: false,
                 info: {
                     title: null,
@@ -103,7 +105,9 @@ export default {
             this.note.info.value = ''
         },
         closeSlide(type) {
-            if (type != this.note.type) return
+            if (this.note.type === '') {
+                this.isSlideActive = !this.isSlideActive
+            } else if (type != this.note.type) return
             else this.isSlideActive = !this.isSlideActive
         },
         setNoteBGC(color) {

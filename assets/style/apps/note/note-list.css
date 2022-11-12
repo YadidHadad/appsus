@@ -3,6 +3,7 @@
     right: 0;
     background-color: white;
     border-radius: 1rem 0 0 0;
+    /* height: calc(100vw - 80px); */
 }
 
 .note-list{
@@ -23,6 +24,8 @@
     .note-lists{
         width: 100vw;
         margin-inline-start: 0;
+        /* height: calc(100vw - 160px); */
+
     }
 }
 

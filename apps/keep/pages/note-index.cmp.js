@@ -25,7 +25,6 @@ export default {
                     <note-list 
                     v-if="notes"
                     :notes="notes"
-                    @removeNote="removeNote"
                      />
 
                 </div>
@@ -34,16 +33,15 @@ export default {
                     v-if="isNoteSelected && notes" 
                     :notes="notes"
                     />
-
-
         </section>
 
         `,
     data() {
         return {
             filterBy: {
-                title: '',
+                title: null,
                 label: [],
+                type: null,
             },
             notes: null,
             urlInfo: {
@@ -51,6 +49,7 @@ export default {
             },
         }
     },
+
     created() {
         this.notesToShow()
             .then(notes => {
@@ -64,9 +63,10 @@ export default {
     },
 
     methods: {
-
         setFilterTitle(value) {
             this.filterBy.title = value.title
+            if (this.filterBy.type === value.type) { this.filterBy.type = null }
+            else { this.filterBy.type = value.type }
             this.notesToShow()
         },
 
@@ -80,9 +80,9 @@ export default {
                 .then(notes => {
                     this.notes = notes
                     this.filterBy = {
-                        title: '',
+                        title: null,
                         label: [],
-
+                        type: null,
                     }
                     showSuccessMsg('notes were loaded successfully!')
                     return notes
@@ -93,10 +93,7 @@ export default {
         addNewNote(newNote) {
             this.notes.unshift(newNote)
         },
-        removeNote(noteId) {
-            const idx = this.notes.findIndex(note => note.id === noteId)
-            this.notes.splice(idx, 1)
-        }
+
     },
 
     computed: {

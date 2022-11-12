@@ -5,6 +5,7 @@
 @import url(../note/note-list.css);
 @import url(../note/note-preview.css);
 @import url(../note/note-details.css);
+@import url(../note/note-filter.css);
 
 
 .note-app{

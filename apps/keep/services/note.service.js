@@ -20,17 +20,25 @@ export const noteService = {
 function query(filterBy) {
   var filter = { ...filterBy }
   var title = filter.title
+  var type = filter.type
   var labels = [...filterBy.label]
 
-  console.log(filter)
-  console.log(title)
-  console.log(labels)
-
+  console.log('filter', filter)
+  console.log('filter', title)
+  console.log('filter', type)
+  console.log('filter', labels)
 
   return storageService.query(NOTES_KEY)
     .then(notes => {
       const regex = new RegExp(title, 'i')
-      let newNotes = notes.filter(note => regex.test(note.info.title))
+      let newNotes = notes.filter(note => {
+        if (!title) return true
+        return regex.test(note.info.title)
+      })
+      newNotes = newNotes.filter(note => {
+        if (!type) return true
+        return note.type === type
+      })
       if (labels.length > 0) newNotes = newNotes.filter(note => note.info.label.some(label => labels.includes(label)))
       console.log(newNotes)
       return newNotes
@@ -46,6 +54,8 @@ function remove(noteId) {
 }
 
 function save(note) {
+  console.log(`note:`, note)
+  console.log(note.id)
   if (note.id) {
     return storageService.put(NOTES_KEY, note)
   } else {
