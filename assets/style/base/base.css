@@ -1,5 +1,9 @@
 * {
   box-sizing: border-box;
+  
+}
+*::first-letter{
+  text-transform: capitalize;
 }
 /* 
 html {

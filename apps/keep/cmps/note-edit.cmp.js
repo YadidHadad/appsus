@@ -8,7 +8,6 @@ export default {
     props: ['note'],
     emits: ['removeNote'],
 
-
     template: `
         <section class="note-edit">
             <div class="fa trash-icon" @click.stop="removeNote"></div>
@@ -41,12 +40,12 @@ export default {
     created() {
 
         if (this.note.info.title) {
-            this.email.subject = this.note.info.title.split(' ').join('$')
+            this.email.subject = this.getURLFromTitle
         }
         if (this.note.info.url) {
-            this.email.body = this.note.info.url.split('/').join(']')
+            this.email.body = this.getURLFromLink
         } else if (this.note.info.txt) {
-            this.email.body = this.note.info.txt.split(' ').join('$')
+            this.email.body = this.getURLFromTxt
         }
     },
 
@@ -97,5 +96,27 @@ export default {
 
     },
 
-    computed: {},
+    computed: {
+        getTitleFromURL() {
+
+        },
+        getURLFromTitle() {
+            return this.note.info.title.split(' ').join('$')
+
+        },
+        getTxtFromURL() {
+
+        },
+        getURLFromTxt() {
+            return this.note.info.txt.split(' ').join('$')
+
+        },
+        getLinkFromURL() {
+
+        },
+        getURLFromLink() {
+            return this.note.info.url.split('/').join(']')
+
+        },
+    },
 }

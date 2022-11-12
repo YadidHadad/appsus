@@ -16,7 +16,8 @@
 @import 'cmps/user-msg.css';
 @import 'cmps/search-filter.css';
 @import 'cmps/app-container.css';
-@import 'cmps//label-picker.css';
+@import 'cmps/label-picker.css';
+@import 'cmps/long-txt.css';
 
 /* Apps */
 @import 'apps/mail/email-app.css';
