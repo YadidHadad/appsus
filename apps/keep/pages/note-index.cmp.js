@@ -14,7 +14,7 @@ export default {
     props: [],
     template: `
         <section class="app-container note-app">
-            <note-filter class="search-filter" @filterTitle="setFilterTitle" />
+            <note-filter class="search-filter note-search-filter" @filterTitle="setFilterTitle" />
             
             <section class="flex row">
                 
