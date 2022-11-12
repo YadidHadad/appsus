@@ -36,6 +36,7 @@ font-size: 1.5rem;
 color: rgb(25, 48, 124);
 }
 .email-compose .send-btn {
+  font-family: OpenSans-Regular;
 border: unset;
 background-color: rgb(50, 87, 206);
 border-radius: 50px;
@@ -44,12 +45,19 @@ margin: 0.6rem;
 padding: 0.5rem 1rem;
 font-size: 1rem;
 }
-.email-compose  .save-email-to-note{
-  padding: 0.5rem 1rem;
-  border: 1px solid var(--clr2);
-  margin: 0.6rem;
+.email-compose .send-btn:hover {
+background-color:rgb(95, 138, 255)
 }
-
+.email-compose .save-email-to-note{
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--clr4);
+  margin: 0.6rem;
+  border-radius: 50px;
+}
+.email-compose .save-email-to-note:hover{
+background-color: rgb(240, 205, 118);
+}
 .email-compose .btns{
   display: flex;
   justify-content: space-between;

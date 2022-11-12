@@ -39,8 +39,16 @@
 .email-folder-list button:hover {
   box-shadow: 4px 3px 6px -1px var(--clr4);
 }
+.email-folder-list .unread-num {
+padding-inline-start: 0.8rem;
+color: rgb(24, 43, 139);
+font-size: 0.8rem;
+font-weight: bold;
+}
 
 .button-active {
   background-color: var(--clr6);
 }
-
+.active{
+  background-color: rgba(97, 151, 223, 0.699);
+}

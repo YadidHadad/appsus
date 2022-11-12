@@ -120,15 +120,39 @@
     "to": "user@appsus.com" 
   },
   { "id": "e111",
-    "subject": "Miss you!",
+    "subject": "Celebrate Lhabab Düchen with Special All-Day Program November 15!",
     "body": "Would love to catch up sometimes",
     "isRead": false,
     "status": "sent",
     "sentAt" : 1658784691000,
      "from":{
-     "name": "Adobe Creative Cloud",
-     "emailAddress": "mail@mail.adobe.com"
+     "name": "Tushita Meditation Centre",
+     "emailAddress": "register@tushita.info"
      },
     "to": "user@appsus.com" 
-  }
+  },
+  { "id": "e112",
+  "subject": "Miss you!",
+  "body": "Would love to catch up sometimes",
+  "isRead": false,
+  "status": "sent",
+  "sentAt" : 1658784691000,
+   "from":{
+   "name": "Adobe Creative Cloud",
+   "emailAddress": "mail@mail.adobe.com"
+   },
+  "to": "user@appsus.com" 
+},
+  { "id": "e113",
+  "subject": "Miss you!",
+  "body": "Would love to catch up sometimes",
+  "isRead": false,
+  "status": "sent",
+  "sentAt" : 1658784691000,
+   "from":{
+   "name": "Adobe Creative Cloud",
+   "emailAddress": "mail@mail.adobe.com"
+   },
+  "to": "user@appsus.com" 
+}
 ]

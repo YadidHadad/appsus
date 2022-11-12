@@ -14,6 +14,7 @@ export const emailService = {
   getNextEmailId,
   getPrevEmailId,
   getEmptyEmail,
+  countUnred,
 }
 
 function query(filterBy) {
@@ -31,6 +32,13 @@ function query(filterBy) {
       }
       return newEmails
     })
+}
+
+function countUnred() {
+  return query().then((emails) => {
+    const newEmails = emails.filter((email) => !email.isRead)
+    return newEmails.length
+  })
 }
 
 function get(emailId) {

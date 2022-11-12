@@ -11,7 +11,7 @@ export default {
           <button class="fa arrow-icon open-mobile-menu" @click="toggleMobileMenu"></button>
           <section class="app-container email-app">
             <email-filter class="search-filter" @filter="filter" />
-            <email-folder-list class="email-folder-list" :class="show" @filterByStatus="filterStatus" @composeEmail="openEmailCompose" />
+            <email-folder-list class="email-folder-list" :class="show" @filterByStatus="filterStatus" :unreaEmails="unreaEmails" @composeEmail="openEmailCompose" />
             <email-compose class="email-compose" v-if="isComposeOpen" @sendMail="composeEmail" @close="openEmailCompose"  :urlInfo="urlInfo"/>
             <email-list v-if="emails" @remove="removeEmail" @read="readenEmail" :emails="emails"/>
         </section>
@@ -31,7 +31,7 @@ export default {
         subject: this.$route.params.subject,
         body: this.$route.params.body,
       },
-    
+      unreaEmails: null,
     }
   },
 
@@ -42,16 +42,15 @@ export default {
     if (this.$route.params.subject || this.$route.params.body) {
       this.isComposeOpen = true
     }
+    this.getUnread()
   },
 
   methods: {
     filter(filterBy) {
-
       this.filterBy = filterBy
       this.emailsToShow({ ...this.filterBy })
     },
     filterStatus(filterBy) {
-
       this.filterBy.status = filterBy
       this.emailsToShow({ ...this.filterBy })
     },
@@ -64,6 +63,7 @@ export default {
         email.isRead = true
         emailService.save(email)
       })
+      this.getUnread()
     },
 
     removeEmail(emailId) {
@@ -94,12 +94,11 @@ export default {
       this.isMenuOpen = !this.isMenuOpen
       console.log('hi')
     },
-    // getUnredCount() {
-    //   const emails = this.emails
-    //   console.log(emails)
-    //   const countUnred = emails.filter((email) => !email.isRead)
-    //   return countUnred.length
-    // },
+    getUnread() {
+      emailService.countUnred().then((num) => {
+        this.unreaEmails = num
+      })
+    },
   },
 
   computed: {
