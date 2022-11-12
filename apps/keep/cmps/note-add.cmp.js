@@ -95,7 +95,10 @@ export default {
                 .then(response => {
                     console.log('created')
                     this.$emit('newNote', response)
+                    showSuccessMsg('note was saved successfully!')
                 })
+                .catch(() => showErrorMsg('Error occurred while saving note to storage!'))
+
             this.note.title = ''
             this.note.info.value = ''
         },

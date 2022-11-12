@@ -73,7 +73,9 @@ export default {
                 .then(() => {
                     this.$emit('noteToRemove', { ...this.note.id })
                     this.closeNote()
+                    showSuccessMsg('note was deleted successfully!')
                 })
+                .catch(() => showErrorMsg('Error occurred while deleting note from storage!'))
         },
 
         setNoteToEdit() {
@@ -89,9 +91,11 @@ export default {
 
         closeEditor() {
             noteService.save(this.note)
-                .then(() => this.$router.push({ path: '/note' }))
-
-
+                .then(() => {
+                    showSuccessMsg('note was saved successfully!')
+                    this.$router.push({ path: '/note' })
+                })
+                .catch(() => showErrorMsg('Error occurred while saving note to storage!'))
         },
 
         getDate(timestamp) {

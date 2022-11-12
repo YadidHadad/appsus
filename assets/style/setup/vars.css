@@ -24,3 +24,6 @@
   --clr--7: #f2f6fc;
 
 } 
+
+/* showSuccessMsg('notes were loaded successfully!') */
+/* .catch(() => showErrorMsg('Error occurred while loading notes from storage!')) */

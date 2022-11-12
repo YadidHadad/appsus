@@ -27,21 +27,18 @@ export default {
         }
     },
     methods: {
-        //--------------------------------------------- edit function
         togglePin(note) {
             const noteToEdit = note
             noteToEdit.isPinned = !noteToEdit.isPinned
             noteService.save(noteToEdit)
-                .then(response => response)
+                .then(() => {
+                    showSuccessMsg('note was pinned successfully!')
+                })
+                .catch(() => showErrorMsg('Error occurred while saving note to storage!'))
         },
         removeNote(noteId) {
             this.$emit('removeNote', noteId)
         }
-
-
-
-
-        //--------------------------------------------- edit function
     },
     computed: {
         style() {

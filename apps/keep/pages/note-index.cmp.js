@@ -1,4 +1,6 @@
 import { noteService } from '../services/note.service.js'
+import { showSuccessMsg } from '../../../services/event-bus.service.js'
+import { showErrorMsg } from '../../../services/event-bus.service.js'
 
 import noteFilter from '../cmps/note-filter.cmp.js'
 import noteList from '../cmps/note-list.cmp.js'
@@ -54,11 +56,11 @@ export default {
             .then(notes => {
                 console.log(notes)
                 this.notes = notes
+                showSuccessMsg('notes were loaded successfully!')
             })
-        console.log(`this.notes:`, this.notes)
+            .catch(() => showErrorMsg('Error occurred while loading notes from storage!'))
+
         this.urlInfo.value = this.$route.params.title
-        console.log(this.$route.path)
-        console.log(this.$route.params)
     },
 
     methods: {
@@ -80,9 +82,12 @@ export default {
                     this.filterBy = {
                         title: '',
                         label: [],
+
                     }
+                    showSuccessMsg('notes were loaded successfully!')
                     return notes
                 })
+                .catch(() => showErrorMsg('Error occurred while loading notes from storage!'))
         },
 
         addNewNote(newNote) {

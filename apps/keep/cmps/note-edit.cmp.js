@@ -78,7 +78,9 @@ export default {
             noteService.remove(note.id)
                 .then(() => {
                     this.$emit('removeNote', this.note.id)
+                    showSuccessMsg('note was deleted successfully!')
                 })
+                .catch(() => showErrorMsg('Error occurred while deleting note from storage!'))
         },
 
         editNote(note) {
@@ -94,7 +96,11 @@ export default {
                 return
             }
             noteService.save(note)
-                .then(() => { })
+                .then(() => {
+                    showSuccessMsg('note was saved successfully!')
+
+                })
+                .catch(() => showErrorMsg('Error occurred while saving note to storage!'))
         },
 
         editLabels(labels) {
@@ -106,7 +112,11 @@ export default {
                 return
             }
             noteService.save(note)
-                .then(() => { })
+                .then(() => {
+                    showSuccessMsg('labels were saved successfully!')
+                })
+                .catch(() => showErrorMsg('Error occurred while saving note to storage!'))
+
         },
 
         togglePin(note) {
@@ -117,7 +127,11 @@ export default {
                 return
             }
             noteService.save(note)
-                .then(() => { })
+                .then(() => {
+                    showSuccessMsg('note was pinned successfully!')
+                })
+                .catch(() => showErrorMsg('Error occurred while saving note to storage!'))
+
         },
         setNewTitle() {
             console.log('new title')
