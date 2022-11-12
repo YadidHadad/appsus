@@ -6,10 +6,10 @@ export default {
         <section >
             <input type="text" placeholder="search note by title" v-model.lazy="filterBy.title" @change="filter" />
             <div class="filter-by-type-btns-container">
-                <button @click="setNoteType('note-txt')" class="fa text-icon add-btn"></button>
-                <button @click="setNoteType('note-img')" class="fa img-icon add-btn" ></button>
-                <button @click="setNoteType('note-video')" class="fa video-icon add-btn" ></button>
-                <button @click="setNoteType('note-todos')" class="fa list-icon add-btn" ></button>
+                <button @click="setNoteType('note-txt')"  :class="{ isActiveType : isActiveTypeFilter['note-txt']}" > <span  class="fa text-icon "></span></button>
+                <button @click="setNoteType('note-img')"  :class="{ isActiveType : isActiveTypeFilter['note-img']}" > <span class="fa img-icon "></span> </button>
+                <button @click="setNoteType('note-video')" :class="{ isActiveType : isActiveTypeFilter['note-video']}"  ><span class="fa video-icon "></span>  </button>
+                <button @click="setNoteType('note-todos')" :class="{ isActiveType : isActiveTypeFilter['note-todos']}" > <span  class="fa list-icon "></span></button>
             </div>
         </section>
         `,
@@ -19,18 +19,35 @@ export default {
             filterBy: {
                 title: null,
                 type: null,
-            }
+            },
+            isActiveTypeFilter: {
+                'note-txt': false,
+                'note-img': false,
+                'note-video': false,
+                'note-todos': false,
+            },
         }
     },
+
     methods: {
         filter() {
             this.$emit('filterTitle', { ...this.filterBy })
         },
         setNoteType(type) {
-            console.log(`type:`, type)
-            this.filterBy.type = type
-            this.filter()
-        }
-    },
+            this.isActiveTypeFilter['note-txt'] = false
+            this.isActiveTypeFilter['note-img'] = false
+            this.isActiveTypeFilter['note-video'] = false
+            this.isActiveTypeFilter['note-todos'] = false
 
+            if (this.filterBy.type === type) {
+                this.isActiveTypeFilter[type] = false
+                this.filterBy.type = null
+            }
+            else {
+                this.filterBy.type = type
+                this.isActiveTypeFilter[type] = true
+            }
+            this.filter()
+        },
+    },
 }

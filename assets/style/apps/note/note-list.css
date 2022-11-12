@@ -29,26 +29,26 @@
     }
 }
 
-@media  (min-width: 780px) {
+@media  (min-width: 880px) {
     .note-list{
         column-count: 2;
     }
 }
 
-@media  (min-width: 1025px) {
+@media  (min-width: 1100px) {
     .note-list{
         column-count: 3;
     }
 }
 
 
-@media  (min-width: 1200px) {
+/* @media  (min-width: 1300px) {
     .note-list{
         column-count: 4;
-    }
-}
-@media  (min-width: 1700px) {
+    } */
+
+@media  (min-width: 1500px) {
     .note-list{
-        column-count: 5;
+        column-count: 4;
     }
 }

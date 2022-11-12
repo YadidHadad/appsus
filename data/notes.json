@@ -32,8 +32,8 @@
     "type": "note-img",
     "isPinned": true,
     "info": {
-      "title": "Mom's favorite cake!",
-      "url": "assets/img/notes/cake.jpg",
+      "title": "Best day at the beach!",
+      "url": "http://shanelongphotography.com/wp-content/uploads/sites/6499/2021/03/Sarasota-Florida-Lido-Key-Beach-Family-Portrait-Session-Photographer_0001.jpg",
       "label": [
         "family",
         "friends"
@@ -48,8 +48,8 @@
     "type": "note-video",
     "isPinned": false,
     "info": {
-      "title": "do some exercise!",
-      "url": "https://www.youtube.com/embed/3p8EBPVZ2Iw",
+      "title": "Leave Britney Alone!",
+      "url": "https://www.youtube.com/embed/WqSTXuJeTks",
       "label": [
         "work",
         "critical"
@@ -138,21 +138,21 @@
     "type": "note-todos",
     "isPinned": true,
     "info": {
-      "title": "Mom's birthday!",
+      "title": "Drag and drop?",
       "label": [
         "family"
       ],
       "todos": [
         {
-          "txt": "bake a cake!",
+          "txt": "Dont have time to implement!",
           "doneAt": null
         },
         {
-          "txt": "is grandpa coming?",
+          "txt": "",
           "doneAt": 187111111
         },
         {
-          "txt": "buy balloons!",
+          "txt": "",
           "doneAt": 187111111
         }
       ],
@@ -182,8 +182,8 @@
     "type": "note-video",
     "isPinned": true,
     "info": {
-      "title": "do some exercise!",
-      "url": "https://www.youtube.com/embed/3p8EBPVZ2Iw",
+      "title": "Drag and Drop?",
+      "url": "https://www.youtube.com/embed/-kZLD40d-tI",
       "label": [
         "work",
         "critical"
@@ -215,7 +215,7 @@
     "type": "note-todos",
     "isPinned": true,
     "info": {
-      "title": "learn vue!",
+      "title": "Study vue!",
       "label": [
         "work",
         "critical"
@@ -300,14 +300,14 @@
     "type": "note-img",
     "isPinned": true,
     "info": {
-      "title": "Mom's favorite cake!",
-      "url": "assets/img/notes/cake.jpg",
+      "title": "The best FrameWork!",
+      "url": "https://avatars.githubusercontent.com/u/6128107?s=280&v=4",
       "label": [
         "family",
         "friends"
       ],
       "style": {
-        "backgroundColor": "#ffb7b2"
+        "backgroundColor": "#ffdac1"
       }
     }
   },
@@ -332,8 +332,8 @@
     "type": "note-img",
     "isPinned": true,
     "info": {
-      "title": "Missing charlie!",
-      "url": "assets/img/notes/dog.jpg",
+      "title": "Extra windy today!",
+      "url": "https://media.istockphoto.com/id/1369510051/photo/happy-woman-friends-with-child-taking-selfie-at-seaside.jpg?s=612x612&w=0&k=20&c=jebTtKirrzNZ8YwBkj4B5qmuIUHw3cGW9u4z-IshHTo=",
       "label": [
         "family",
         "friends",
@@ -374,8 +374,8 @@
     "type": "note-txt",
     "isPinned": true,
     "info": {
-      "title": "chase my dreams",
-      "txt": "become a software developer!",
+      "title": "Importance and Uses of Notes",
+      "txt": "Notes are used for several different purposes. In business, notes are written documents that members of an organization use for internal communication.",
       "label": [
         "work",
         "romantic"
@@ -388,10 +388,10 @@
   {
     "id": 123,
     "type": "note-img",
-    "isPinned": false,
+    "isPinned": true,
     "info": {
-      "title": "buy pink shirt for wednesday",
-      "url": "assets/img/notes/pink.jpg",
+      "title": "Free Britney!",
+      "url": "https://media.npr.org/assets/img/2021/11/11/gettyimages-1343917205_wide-d9182a624b26bc00e5dbe9706ff7078f56c465fc.jpg",
       "label": [
         "friends",
         "romantic"
@@ -430,22 +430,6 @@
     }
   },
   {
-    "id": 125,
-    "type": "note-img",
-    "isPinned": false,
-    "info": {
-      "title": "Mom's favorite cake!",
-      "url": "assets/img/notes/cake.jpg",
-      "label": [
-        "family",
-        "friends"
-      ],
-      "style": {
-        "backgroundColor": "#b5ead7"
-      }
-    }
-  },
-  {
     "id": 126,
     "type": "note-video",
     "isPinned": true,
@@ -458,23 +442,6 @@
       ],
       "style": {
         "backgroundColor": "#f9a52c"
-      }
-    }
-  },
-  {
-    "id": 127,
-    "type": "note-img",
-    "isPinned": false,
-    "info": {
-      "title": "Missing charlie!",
-      "url": "assets/img/notes/dog.jpg",
-      "label": [
-        "family",
-        "friends",
-        "memories"
-      ],
-      "style": {
-        "backgroundColor": "white"
       }
     }
   },
@@ -524,8 +491,8 @@
     "type": "note-img",
     "isPinned": true,
     "info": {
-      "title": "buy pink shirt for wednesday",
-      "url": "assets/img/notes/pink.jpg",
+      "title": "lol!",
+      "url": "https://clideo.com/files/content/twitter-meme-maker-1.png",
       "label": [
         "friends",
         "romantic"
