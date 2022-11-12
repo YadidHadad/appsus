@@ -89,9 +89,14 @@ export default {
             this.note.type = type
             this.$refs.name.focus()
         },
-        createNote() {
 
-            if (!{ ...this.note.title }) return
+        createNote() {
+            var title = this.note.title
+            if (title === undefined) {
+                showErrorMsg('A note must have title!')
+                return
+            }
+
             var note = { ...this.note }
             noteService.createNote(note)
                 .then(response => {
@@ -109,6 +114,7 @@ export default {
             } else if (type != this.note.type) return
             else this.isSlideActive = !this.isSlideActive
         },
+
         setNoteBGC(color) {
             this.note.info.style.backgroundColor = color
         },
