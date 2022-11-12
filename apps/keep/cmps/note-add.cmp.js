@@ -43,17 +43,22 @@ export default {
     },
 
     created() {
-        if (this.urlInfo.value) {
+        if (this.urlInfo.title) {
+            if (this.urlInfo.title !== '') {
+                this.note.info.title = this.urlInfo.title
+                this.note.info.value = this.urlInfo.txt
+                this.note.type = 'note-txt'
+                this.note.isPinned = true
 
-            if (this.urlInfo.value !== '') {
-                this.note.info.value = this.urlInfo.value
                 this.createNote()
             }
         }
+
     },
 
     mounted() {
         this.$refs.name.focus()
+
     },
 
     data() {
@@ -91,23 +96,24 @@ export default {
         },
 
         createNote() {
-            var title = this.note.title
+            var title = this.note.info.title
             if (title === undefined) {
                 showErrorMsg('A note must have title!')
                 return
             }
-
             var note = { ...this.note }
             noteService.createNote(note)
                 .then(response => {
                     this.$emit('newNote', response)
+                    this.note.title = ''
+                    this.note.info.value = ''
                     showSuccessMsg('note was saved successfully!')
                 })
                 .catch(() => showErrorMsg('Error occurred while saving note to storage!'))
 
-            this.note.title = ''
-            this.note.info.value = ''
+
         },
+
         closeSlide(type) {
             if (this.note.type === '') {
                 this.isSlideActive = !this.isSlideActive

@@ -9,7 +9,7 @@ export default {
       <textarea v-model="newMail.body" name="comment" ></textarea>
       <section class="btns">
       <button class="send-btn" title="Send email">Send</button>
-      <router-link class="save-email-to-note"  :to="'/note/'+ '0/' + newMail.subject + newMail.body + ''">Keep as Note</router-link>
+      <router-link class="save-email-to-note"  :to="'/note/'+ '0/' + newMail.subject + '/' + newMail.body + ''">Keep as Note</router-link>
       </section>
       </form>
     `,
