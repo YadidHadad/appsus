@@ -29,7 +29,8 @@ export default {
       this.newMail.subject = newSubject
     }
     if (this.urlInfo.body !== 'undefined') {
-      var newBody = this.urlInfo.body.split(']').join(' ')
+      var newBody = this.urlInfo.body.split(']').join('/')
+      newBody = newBody.split('$').join(' ')
       this.newMail.body = newBody
     }
   },
